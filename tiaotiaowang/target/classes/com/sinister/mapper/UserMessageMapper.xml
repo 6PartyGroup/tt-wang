@@ -16,7 +16,7 @@
 		<result column="u_school" jdbcType="VARCHAR" property="school" />
 		<result column="u_edu" jdbcType="VARCHAR" property="edu" />
 		<result column="u_workyear" jdbcType="INTEGER" property="workyear" />
-		<result column="u_telon" jdbcType="INTEGER" property="telon" />
+		<result column="u_telon" jdbcType="VARCHAR" property="telon" />
 		<result column="u_email" jdbcType="VARCHAR" property="email" />
 		<result column="u_work" jdbcType="VARCHAR" property="work" />
 		<result column="u_jobs" jdbcType="VARCHAR" property="jobs" />
@@ -32,25 +32,26 @@
 	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
 	<select id="findUserMessage" parameterType="com.sinister.entity.UserMessage"
 		resultMap="UserMessageResult">
-		SELECT * FROM u_message where <!-- 1=1
-		<if test="sex!=''">
+		SELECT * FROM u_message where
+		u_status=0
+	<!-- 	<if test="sex!=''">
 			and u_sex =#{sex}
 		</if>
-		<if test="age!=''">
-			and --> u_age BETWEEN #{age} and #{status}
-	<!-- 	</if>
+		<if test="age!=''"> -->
+			and u_age BETWEEN #{age} and #{status}
+		<!-- </if>
 		<if test="edu!=''">
 			and u_edu = #{edu}
 		</if>
 		<if test="workyear!=''">
-			and u_workyear BETWEEN #{workyear} and #{skill}
+			and u_workyear BETWEEN #{workyear} and #{money}
 		</if>
 		<if test="major!=''">
 			and u_major = #{major}
 		</if>
 		<if test="jobs!=''">
 			and u_jobs = #{jobs}
-		</if> -->
+		</if>  -->
 	</select>
 
 
