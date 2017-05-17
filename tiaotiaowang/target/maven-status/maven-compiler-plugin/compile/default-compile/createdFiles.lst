@@ -1,0 +1,5 @@
+com\sinister\dao\UserDao.class
+com\sinister\entity\User.class
+com\sinister\service\impl\UserServiceImpl.class
+com\sinister\service\UserService.class
+com\sinister\controller\UserController.class
