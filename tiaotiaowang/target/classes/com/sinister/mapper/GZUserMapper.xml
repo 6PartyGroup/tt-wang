@@ -19,15 +19,9 @@
 		<result column="c_show" jdbcType="VARCHAR" property="show" />
 	</resultMap>
 	
-<!--    <insert id="saveGZUser" parameterType="com.sinister.entity.GZUserEntity" useGeneratedKeys="false">
-     insert into user (name,pwd) values (#{name},#{pwd})
-   </insert> -->
-   
    	<select id="findGZUser" parameterType="com.sinister.entity.GZUserEntity" resultMap="GZUserResult">
 	  select * from c_message where c_mid=#{mid} 
 	</select>
 	
-	
-	
-	
+
 </mapper>
