@@ -15,14 +15,6 @@ public class GZUserController {
 	@Autowired
 	private GZUserService gzuserservice;
 	
-	
-//	@RequestMapping("login")
-//	public String saveUser1(){
-//		GZUserEntity entity = gzuserservice.findGZUser(1);
-//		System.out.println(entity.getAddress());
-//		return "index";	
-//	}
-	
 	@RequestMapping("find.do")
 	@ResponseBody
 	public String findUser(@RequestBody GZUserEntity gz){
