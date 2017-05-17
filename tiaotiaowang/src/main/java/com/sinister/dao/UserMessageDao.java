@@ -11,4 +11,5 @@ public interface UserMessageDao {
 	void updateUserMessage(UserMessage userMessage);
 
 	public List<UserMessage> findUserMessage(UserMessage userMessage);
+	public List<UserMessage> findUserMessageTime();
 }

@@ -12,4 +12,6 @@ public interface UserMessageService {
 
 	public List<UserMessage> findUserMessage(UserMessage userMessage);
 
+	public List<UserMessage> findUserMessageTime();
+
 }

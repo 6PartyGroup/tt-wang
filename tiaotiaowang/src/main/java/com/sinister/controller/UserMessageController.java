@@ -20,8 +20,7 @@ public class UserMessageController {
 	@RequestMapping("saveUserMessage")
 	@ResponseBody
 	public String saveUserMessage(@RequestBody UserMessage userMessage) {
-		
-		
+
 		userMessageService.saveUserMessage(userMessage);
 
 		return null;
@@ -33,12 +32,24 @@ public class UserMessageController {
 		return null;
 
 	}
-	@RequestMapping(value="findUserMessage.do" ,method=RequestMethod.POST)
-	@ResponseBody
-	public List<UserMessage> findUserMessage(@RequestBody UserMessage usermessage){
-	
-		return userMessageService.findUserMessage(usermessage);
-		
-	}
 
+	@RequestMapping(value = "findUserMessage.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<UserMessage> findUserMessage(@RequestBody UserMessage usermessage) {
+
+		List<UserMessage> list = userMessageService.findUserMessage(usermessage);
+
+		System.out.println(list.size() == 0);
+		System.out.println(list);
+
+		if (list.size() != 0) {
+			return userMessageService.findUserMessage(usermessage);
+		}
+		return null;
+
+	}
+	@RequestMapping(value="findUserMessageTime.do", method=RequestMethod.POST) 
+	public List<UserMessage> findUserMessageTime() {
+		return userMessageService.findUserMessageTime();
+	}
 }
