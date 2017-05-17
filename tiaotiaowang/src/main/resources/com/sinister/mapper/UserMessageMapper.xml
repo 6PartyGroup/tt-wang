@@ -32,26 +32,29 @@
 	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
 	<select id="findUserMessage" parameterType="com.sinister.entity.UserMessage"
 		resultMap="UserMessageResult">
-		SELECT * FROM u_message where
-		u_status=0
-	<!-- 	<if test="sex!=''">
+		SELECT * FROM u_message where 1=1
+		<if test="1==1">
+			and u_status=0
+		</if>
+		<if test="sex!=null">
 			and u_sex =#{sex}
 		</if>
-		<if test="age!=''"> -->
+		<if test="age!=0">
 			and u_age BETWEEN #{age} and #{status}
-		<!-- </if>
-		<if test="edu!=''">
+		 </if>
+		<if test="edu!=null">
 			and u_edu = #{edu}
 		</if>
-		<if test="workyear!=''">
+		<if test="workyear!=0">
 			and u_workyear BETWEEN #{workyear} and #{money}
 		</if>
-		<if test="major!=''">
+		<if test="major!=null">
 			and u_major = #{major}
 		</if>
-		<if test="jobs!=''">
+		<if test="jobs!=null">
 			and u_jobs = #{jobs}
-		</if>  -->
+		</if> 
+		ORDER BY u_time DESC
 	</select>
 
 
