@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
+<mapper namespace="com.sinister.dao.GZUserDao">
+	<!-- type属性-实体类 -->
+	<resultMap type="com.sinister.entity.GZUserEntity" id="GZUserResult">
+		<!-- 映射字段 数据库—实体类 -->
+		<!-- column数据表字段 ，property 实体类的属性 -->
+		<id column="c_mid" jdbcType="INTEGER" property="mid" />
+		<result column="c_name" jdbcType="VARCHAR" property="name" />
+		<result column="c_telon" jdbcType="VARCHAR" property="telon" />
+		<result column="c_address" jdbcType="VARCHAR" property="address" />
+		<result column="c_email" jdbcType="VARCHAR" property="email" />
+		<result column="c_scale" jdbcType="VARCHAR" property="scale" />
+		<result column="c_nature" jdbcType="VARCHAR" property="nature" />
+		<result column="c_logo" jdbcType="VARCHAR" property="logo" />
+		<result column="c_show" jdbcType="VARCHAR" property="show" />
+	</resultMap>
+	
+<!--    <insert id="saveGZUser" parameterType="com.sinister.entity.GZUserEntity" useGeneratedKeys="false">
+     insert into user (name,pwd) values (#{name},#{pwd})
+   </insert> -->
+   
+   	<select id="findGZUser" parameterType="com.sinister.entity.GZUserEntity" resultMap="GZUserResult">
+	  select * from c_message where c_mid=#{mid} 
+	</select>
+	
+	
+	
+	
+</mapper>
