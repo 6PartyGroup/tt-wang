@@ -26,4 +26,8 @@ public class UserMessageServiceImpl implements UserMessageService {
 		return userMessageDao.findUserMessage(userMessage);
 	}
 
+	public List<UserMessage> findUserMessageTime() {
+		return userMessageDao.findUserMessageTime();
+	}
+
 }
