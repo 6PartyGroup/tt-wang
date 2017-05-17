@@ -16,7 +16,7 @@ public class UserMessage {
 	private String school;
 	private String edu;
 	private int workyear;
-	private int telon;
+	private String telon;
 	private String email;
 	private String major;// 专业
 
@@ -110,11 +110,13 @@ public class UserMessage {
 		this.major = major;
 	}
 
-	public int getTelon() {
+
+
+	public String getTelon() {
 		return telon;
 	}
 
-	public void setTelon(int telon) {
+	public void setTelon(String telon) {
 		this.telon = telon;
 	}
 
