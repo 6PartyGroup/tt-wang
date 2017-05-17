@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
-<mapper namespace="com.sinister.dao.TtUserDao">
+<mapper namespace="com.sinister.dao.TtComDao">
 	<!-- type属性-实体类 -->
-	<resultMap type="com.sinister.entity.TtComMessageEntity" id="TtComResult">
+	<resultMap type="com.sinister.entity.TtComMessageEntity" id="TtMessageResult">
 		<!-- 映射字段 数据库—实体类 -->
 		<!-- column数据表字段 ，property 实体类的属性 -->
 		<id column="c_mid" jdbcType="INTEGER" property="c_mid" />
@@ -18,11 +18,11 @@
 		<result column="c_show" jdbcType="VARCHAR" property="c_show" />
 	</resultMap>
 	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
-	<select id="saveComMessage" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtComResult">
+	<select id="findcomMessage" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
 		select c_show from c_message where c_name=#{c_name}
 	</select>
 	<insert id="saveComMessage" parameterType="com.sinister.entity.TtComMessageEntity">
 		<!-- 在xml写sql时，一定要在mysql运行成功 -->
-		insert into c_message (c_show)values(#{c_show})
+		insert into c_message (c_name,c_telon,c_address,c_scale,c_nature,c_show,logo)values(#{c_name},#{c_telon},#{c_address},#{c_scale},#{c_nature},#{logo},#{c_show})
 	</insert>
 	</mapper>
