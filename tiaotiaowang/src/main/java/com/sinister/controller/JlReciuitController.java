@@ -14,7 +14,7 @@ public class JlReciuitController {
 	@Autowired
 	private JlReciuitService jlReciuitService ;
 	//hello
-	
+	//world
 	@RequestMapping("jltest")
 	@ResponseBody
 	public String test(){
