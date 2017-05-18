@@ -14,4 +14,7 @@ public interface TtComService {
 	public void insertTtCom(TtCom ttCom);
 	public TtComMessageEntity findcomMessage(TtComMessageEntity comMessageEntity);
 	public void saveComMessage(TtComMessageEntity comMessageEntity);
+	public TtCom findComName(TtCom ttCom);
+	public TtComMessageEntity findcomMessage_name(TtComMessageEntity comMessageEntity);
+
 }

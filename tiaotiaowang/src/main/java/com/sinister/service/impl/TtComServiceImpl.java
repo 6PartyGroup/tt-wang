@@ -33,4 +33,13 @@ public class TtComServiceImpl implements TtComService {
 		ttComDao.saveComMessage(comMessageEntity);
 		
 	}
+
+	public TtCom findComName(TtCom ttCom) {
+		
+		return ttComDao.findComName(ttCom);
+	}
+
+	public TtComMessageEntity findcomMessage_name(TtComMessageEntity comMessageEntity) {
+		return ttComDao.findcomMessage_name(comMessageEntity);
+	}
 }
