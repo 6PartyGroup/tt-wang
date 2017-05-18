@@ -40,9 +40,6 @@
 		<!-- 这边不能使用ref="sqlSessionFactory"原因是因为上面加载配置文件导致这边引用会报错 -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-	<!-- <bean id="studentRedisDao" class="com.lanou.cache.StudentRedisDao"> 
-		<constructor-arg index="0" value="localhost"></constructor-arg> <constructor-arg 
-		index="1" value="6379"></constructor-arg> </bean> -->
 		
 		
 		<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->  

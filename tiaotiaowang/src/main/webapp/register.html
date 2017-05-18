@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+	function register() {
+		var user = {};
+		user.username = $("#username").val();
+		user.password = $("#password").val();
+		$.ajax({
+			url : "tiaotiaowang/sl_userregister.do",
+			type : "post",
+			data : JSON.stringify(user),
+			datatype : "json",
+			contentType : "application/json;charset=utf-8",
+			success : function(result) {
+				if (result == "success") {
+					alert("注册成功");
+				}
+				if(result=="exise"){
+					alert("该账户名已存在");
+				}
+			}
+
+		})
+	}
+</script>
+</head>
+<body>
+	账号
+	<input type="text" id="username">
+	<br> 密码
+	<input type="text" id="password">
+	<br>
+	<input type="button" value="注册" onclick="register()">
+
+</body>
+</html>

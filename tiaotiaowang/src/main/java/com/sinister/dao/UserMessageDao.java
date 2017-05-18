@@ -16,4 +16,6 @@ public interface UserMessageDao {
 	public int findUserMessageCount(UserMessage userMessage);
 //	public List<UserMessage> findUserMessage(UserMessage userMessage);
 	public List<UserMessage> findUserMessageTime();
+
+	UserMessage findUserMessageById(Integer uid);
 }

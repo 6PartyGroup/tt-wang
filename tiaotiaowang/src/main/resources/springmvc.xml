@@ -30,7 +30,7 @@
 	<mvc:default-servlet-handler />
 	<mvc:resources  mapping="/resources/**" location="/resources/"  />
 	<mvc:resources  mapping="/views/**"  location="/views/" />	
-	<mvc:resources  mapping="/**"  location="/WEB-INF/" />	
+	<mvc:resources  mapping="/**"  location="/" />	
 
 	<!-- 文件上传配置 5*1024*1024=1M -->
 	<bean id="multipartResolver"

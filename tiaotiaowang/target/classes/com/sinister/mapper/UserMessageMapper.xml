@@ -93,16 +93,15 @@
 	<insert id="saveUserMessage" parameterType="com.sinister.entity.UserMessage"
 		useGeneratedKeys="true">
 		insert into u_message
-		(u_logo,u_name,u_sex,u_age,u_edu,u_workyear,u_telon,u_email,
+		(u_logo,u_name,u_sex,u_age,u_school,u_edu,u_workyear,u_telon,u_email,u_major,
 		u_work,u_jobs,u_myself,u_money,u_skill,u_time,u_status,u_uid)
 		values
-		(#{logo},#{name},#{sex},#{age},#{edu},#{workyear},#{telon},
-		#{email},#{work},#{jobs},#{myself},#{money},#{skill},#{time},#{status},#{user.uid})
+		(#{logo},#{name},#{sex},#{age},#{school},#{edu},#{workyear},#{telon},#{email},#{major},
+		#{work},#{jobs},#{myself},#{money},#{skill},#{time},#{status},#{user.uid})
 	</insert>
 
 	<!--个人信息修改 -->
 	<update id="updateUserMessage" parameterType="com.sinister.entity.UserMessage">
-
 		update user
 		<set>
 			<if test="logo!=null">u_logo =#{logo},</if>

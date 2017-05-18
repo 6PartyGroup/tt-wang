@@ -19,12 +19,13 @@ public class UserMessage {
 	private String telon;
 	private String email;
 	private String major;// 专业
-
 	private String work;// 工作经历
 	private String jobs;// 求职岗位
 	private String myself;// 自我评价
 	private int money;// 期望薪资
-	private String skill;// 专业技能
+	private String skill ;// 专业技能
+	
+	
 	private Date time;// 简历生成时间
 	private int status;// 状态
 
