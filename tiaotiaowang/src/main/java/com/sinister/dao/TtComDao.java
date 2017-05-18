@@ -13,5 +13,7 @@ public interface TtComDao {
 	public void saveComMessage(TtComMessageEntity comMessageEntity);
 	public TtCom findComName(TtCom ttCom);
 	public TtComMessageEntity findcomMessage_name(TtComMessageEntity comMessageEntity);
+	public void saveComMessagefile(TtComMessageEntity cME);
+	public TtComMessageEntity findcomMessage_logo(TtComMessageEntity cME);
 
 }
