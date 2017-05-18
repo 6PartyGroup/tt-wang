@@ -22,7 +22,7 @@ public class JlReciuitController {
 	
 
 	/**
-	 * JL Controller²ã±£´æÕÐÆ¸ÐÅÏ¢
+	 * JL Controllerï¿½ã±£ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½Ï¢
 	 * @param jlReciuit
 	 * @return
 	 */
