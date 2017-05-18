@@ -55,13 +55,14 @@ public class UserMessageController {
 		if (list.size() != 0) {
 			ModelUserMessage model=new ModelUserMessage();
 			model.setPage(page);
-			model.setUserMessagel(list);
+			model.setUserMessage(list);
 			return model;
 		}
 		return null;
 
 	}
 	@RequestMapping(value="findUserMessageTime.do", method=RequestMethod.POST) 
+	@ResponseBody
 	public List<UserMessage> findUserMessageTime() {
 		return userMessageService.findUserMessageTime();
 	}

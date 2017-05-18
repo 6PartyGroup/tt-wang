@@ -21,13 +21,13 @@
 		<result column="c_mid" jdbcType="INTEGER" property="c_mid" />
 	</resultMap>
 
-<insert id="JlSaveReciuit" parameterType="com.sinister.entity.JlReciuit">
-	insert into c_recruit 
-	(c_duty,c_requirement,c_money,c_workyear,c_number,c_edu,c_address,c_mid)
-	values
-	(#{c_duty},#{c_requirement},#{c_money},#{c_workyear},#{c_number},#{c_edu},
-	#{c_address},#{c_mid})
-</insert>
+	<insert id="JlSaveReciuit" parameterType="com.sinister.entity.JlReciuit">
+		insert into c_recruit 
+		(c_duty,c_requirement,c_money,c_workyear,c_number,c_edu,c_address,c_mid)
+		values
+		(#{c_duty},#{c_requirement},#{c_money},#{c_workyear},#{c_number},#{c_edu},
+		#{c_address},#{c_mid})
+	</insert>
 
 
 
