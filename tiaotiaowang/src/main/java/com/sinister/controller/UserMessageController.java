@@ -53,7 +53,7 @@ public class UserMessageController {
 		System.out.println(list);
 
 		if (list.size() != 0) {
-			ModelUserMessage model=new ModelUserMessage();
+			ModelUserMessage model = new ModelUserMessage();
 			model.setPage(page);
 			model.setUserMessage(list);
 			return model;
@@ -61,7 +61,8 @@ public class UserMessageController {
 		return null;
 
 	}
-	@RequestMapping(value="findUserMessageTime.do", method=RequestMethod.POST) 
+
+	@RequestMapping(value = "findUserMessageTime.do", method = RequestMethod.POST)
 	@ResponseBody
 	public List<UserMessage> findUserMessageTime() {
 		return userMessageService.findUserMessageTime();
