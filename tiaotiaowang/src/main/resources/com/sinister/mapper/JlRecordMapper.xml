@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
 <mapper namespace="com.sinister.dao.JlReciuitDao">
 	<!-- type属性-实体类 -->
-
 	<resultMap type="com.sinister.entity.JlRecord" id="JlRecordResultMapper">
 		<!-- 映射字段 数据库—实体类 -->
 		<!-- column数据表字段 ，property 实体类的属性 -->
 		<id column="c_rid" jdbcType="INTEGER" property="c_rid" />
-		<result column="a_id" jdbcType="INTEGER" property="a_id" />
-		<result column="c_duty" jdbcType="VARCHAR" property="c_duty" />
-		<result column="c_requirement" jdbcType="VARCHAR" property="c_requirement" />
-		<result column="c_money" jdbcType="VARCHAR" property="c_money" />
-		<result column="c_workyear" jdbcType="VARCHAR" property="c_workyear" />
-		<result column="c_number" jdbcType="VARCHAR" property="c_number" />
-		<result column="c_edu" jdbcType="VARCHAR" property="c_edu" />
-		<result column="c_address" jdbcType="VARCHAR" property="c_address" />
+		<result column="r_jobs" jdbcType="INTEGER" property="r_jobs" />
 		<result column="c_mid" jdbcType="INTEGER" property="c_mid" />
+		<result column="r_status" jdbcType="INTEGER" property="r_status" />
+		<result column="r_time" jdbcType="VARCHAR" property="r_time" />
+		<result column="u_mid" jdbcType="INTEGER" property="u_mid" />
 	</resultMap>
 
 
