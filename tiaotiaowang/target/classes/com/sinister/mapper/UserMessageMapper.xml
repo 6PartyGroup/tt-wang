@@ -29,10 +29,43 @@
 		<association property="user"
 			resultMap="com.sinister.dao.UserDao.UserResult"></association>
 	</resultMap>
-	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
-	<select id="findUserMessage" parameterType="com.sinister.entity.UserMessage"
+	<!-- zzz 分页查询 -->
+	<select id="findUserMessage" parameterType="java.util.Map"
 		resultMap="UserMessageResult">
 		SELECT * FROM u_message where 1=1
+		<if test="1==1">
+			and u_status=0
+		</if>
+		<if test="userMessage.sex!=null">
+			and u_sex =#{userMessage.sex}
+		</if>
+		<if test="userMessage.age!=0">
+			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
+		</if>
+		<if test="userMessage.edu!=null">
+			and u_edu = #{userMessage.edu}
+		</if>
+		<if test="userMessage.workyear!=0">
+			and u_workyear BETWEEN #{userMessage.workyear} and #{userMessage.money}
+		</if>
+		<if test="userMessage.major!=null">
+			and u_major = #{userMessage.major}
+		</if>
+		<if test="userMessage.jobs!=null">
+			and u_jobs like "%"#{userMessage.jobs}"%"
+		</if>
+		ORDER BY u_time DESC
+		limit #{page.dbIndex},#{page.dbNumber}
+	</select>
+	<!-- zzz查询最新更新的5条简历 -->
+	<select id="findUserMessageTime" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		SELECT * FROM u_message where u_status=0 ORDER BY u_time DESC limit 0,5
+	</select>
+	<!-- zzz总数查询 -->
+	<select id="findUserMessageCount" resultType="int">
+		SELECT count(u_mid) FROM
+		u_message where 1=1
 		<if test="1==1">
 			and u_status=0
 		</if>
@@ -41,7 +74,7 @@
 		</if>
 		<if test="age!=0">
 			and u_age BETWEEN #{age} and #{status}
-		 </if>
+		</if>
 		<if test="edu!=null">
 			and u_edu = #{edu}
 		</if>
@@ -52,12 +85,10 @@
 			and u_major = #{major}
 		</if>
 		<if test="jobs!=null">
-			and u_jobs = #{jobs}
-		</if> 
+			and u_jobs like "%"#{jobs}"%"
+		</if>
 		ORDER BY u_time DESC
 	</select>
-
-
 	<!-- 个人信息填写 -->
 	<insert id="saveUserMessage" parameterType="com.sinister.entity.UserMessage"
 		useGeneratedKeys="true">
