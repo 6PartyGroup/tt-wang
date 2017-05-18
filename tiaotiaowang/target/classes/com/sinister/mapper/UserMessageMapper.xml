@@ -29,7 +29,7 @@
 		<association property="user"
 			resultMap="com.sinister.dao.UserDao.UserResult"></association>
 	</resultMap>
-	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
+	<!-- zzz -->
 	<select id="findUserMessage" parameterType="com.sinister.entity.UserMessage"
 		resultMap="UserMessageResult">
 		SELECT * FROM u_message where 1=1
@@ -41,7 +41,7 @@
 		</if>
 		<if test="age!=0">
 			and u_age BETWEEN #{age} and #{status}
-		 </if>
+		</if>
 		<if test="edu!=null">
 			and u_edu = #{edu}
 		</if>
@@ -53,10 +53,14 @@
 		</if>
 		<if test="jobs!=null">
 			and u_jobs = #{jobs}
-		</if> 
+		</if>
 		ORDER BY u_time DESC
 	</select>
-
+	<!-- zzz -->
+	<select id="findUserMessageTime" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		SELECT * FROM u_message where u_status=0 ORDER BY u_time DESC limit 0,5
+	</select>
 
 	<!-- 个人信息填写 -->
 	<insert id="saveUserMessage" parameterType="com.sinister.entity.UserMessage"

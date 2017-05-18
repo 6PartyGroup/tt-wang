@@ -23,9 +23,7 @@ public class TtComMessage {
 	@RequestMapping("showComMessage.do")
 	@ResponseBody
 	public TtComMessageEntity showComMessage(@RequestBody TtComMessageEntity comMessageEntity){
-		
 		return ttComService.findcomMessage(comMessageEntity);
-		
 	}
 	
 	@RequestMapping("comMessage.do")
