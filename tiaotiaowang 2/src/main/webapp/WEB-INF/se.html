@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	function login() {
+		var UserMessage = {};
+		if ($("#u_age").val() != "") {
+			UserMessage.age = $("#u_age").val();
+		}
+		if ($("#u_status").val() != "") {
+			UserMessage.status = $("#u_status").val();
+		}
+		if ($("#u_sex").val() != "") {
+			UserMessage.sex = $("#u_sex").val();
+		}
+		if ($("#u_edu").val() != "") {
+			UserMessage.edu = $("#u_edu").val();
+		}
+		if ($("#workyear").val() != "") {
+			UserMessage.workyear = $("#workyear").val();
+		}
+		if ($("#money").val() != "") {
+			UserMessage.money = $("#money").val();
+		}
+		if ($("#u_major").val() != "") {
+			UserMessage.major = $("#u_major").val();
+		}
+		if ($("#u_jobs").val() != "") {
+			UserMessage.jobs = $("#u_jobs").val();
+		}
+		$.ajax({
+			url : "findUserMessage.do",
+			type : "post",
+			data : JSON.stringify(UserMessage),
+			contentType : "application/json;charset=utf-8",
+			datatype : "json",
+			success : function(result) {
+				if (result == "") {
+					alert("没有东西")
+				} else {
+					for (var a = 0; a < result.length; a++) {
+						alert(result[a].name)
+					}
+				}
+			},
+			error : function(status) {
+				alert("警告！！！")
+			}
+		})
+
+	}
+</script>
+
+</head>
+<body>
+
+	年龄段
+	<input id="u_age" type="text">
+	<input id="u_status" type="text"> 性别
+	<input id="u_sex" type="text"> 学历
+	<input id="u_edu" type="text"> 工作年限
+	<input id="workyear" type="text">
+	<input id="money" type="text"> 专业
+	<input id="u_major" type="text"> 求职岗位
+	<input id="u_jobs" type="text">
+	<input value="查询" type="button" onclick="login()">
+
+</body>
+</html>

@@ -36,22 +36,22 @@
 		<if test="1==1">
 			and u_status=0
 		</if>
-		<if test="userMessage.sex!=''">
+		<if test="userMessage.sex!=null">
 			and u_sex =#{userMessage.sex}
 		</if>
-		<if test="userMessage.age!=''">
+		<if test="userMessage.age!=0">
 			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
 		</if>
-		<if test="userMessage.edu!=''">
+		<if test="userMessage.edu!=null">
 			and u_edu = #{userMessage.edu}
 		</if>
-		<if test="userMessage.workyear!=''">
+		<if test="userMessage.workyear!=0">
 			and u_workyear BETWEEN #{userMessage.workyear} and #{userMessage.money}
 		</if>
-		<if test="userMessage.major!=''">
+		<if test="userMessage.major!=null">
 			and u_major = #{userMessage.major}
 		</if>
-		<if test="userMessage.jobs!=''">
+		<if test="userMessage.jobs!=null">
 			and u_jobs like "%"#{userMessage.jobs}"%"
 		</if>
 		ORDER BY u_time DESC
