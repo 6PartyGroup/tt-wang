@@ -30,7 +30,6 @@ public class UserMessageController {
 	public String updateUserMessage(@RequestBody UserMessage userMessage) {
 		userMessageService.updateUserMessage(userMessage);
 		return null;
-
 	}
 
 	@RequestMapping(value = "findUserMessage.do", method = RequestMethod.POST)
