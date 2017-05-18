@@ -62,6 +62,7 @@ public class UserMessageController {
 
 	}
 	@RequestMapping(value="findUserMessageTime.do", method=RequestMethod.POST) 
+	@ResponseBody
 	public List<UserMessage> findUserMessageTime() {
 		return userMessageService.findUserMessageTime();
 	}

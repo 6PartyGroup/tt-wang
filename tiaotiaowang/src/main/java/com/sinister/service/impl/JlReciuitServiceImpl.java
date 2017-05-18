@@ -1,18 +1,20 @@
 package com.sinister.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sinister.dao.JlReciuitDao;
 import com.sinister.entity.JlReciuit;
 import com.sinister.service.JlReciuitService;
 
+@Service
 public class JlReciuitServiceImpl implements JlReciuitService{
 
 	@Autowired
 	private JlReciuitDao jlReciuitDao ;
 	
 	/**
-	 * serviceµ÷ÓÃDao±£´æÕÐÆ¸ÐÅÏ¢
+	 * serviceï¿½ï¿½ï¿½ï¿½Daoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½Ï¢
 	 */
 	public void JlSaveReciuit(JlReciuit jlReciuit) {
 		jlReciuitDao.JlSaveReciuit(jlReciuit);
