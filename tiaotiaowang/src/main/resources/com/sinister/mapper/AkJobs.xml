@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinister.dao.AkJobsDao">
+	<resultMap type="com.sinister.entity.AkModel" id="AkJobsResult">
+		<collection property="allJobs"
+			resultMap="com.sinister.dao.AllJobsDao.AllJobsResult"></collection>
+		<collection property="jlReciuit"
+			resultMap="com.sinister.dao.JlReciuitDao.JlReciuitResultMapper"></collection>
+		<collection property="comMessageEntity"
+			resultMap="com.sinister.dao.TtComDao.TtMessageResult"></collection>
+	</resultMap>
+
+	<select id="selectAkJobs" resultMap="AkJobsResult">
+		select
+		r.*,m.*,a.a_id,a.a_name from c_recruit r
+		LEFT join c_message m on
+		r.c_mid = m.c_mid
+		LEFT join alljobs a on a.a_id = r.a_id
+		ORDER BY
+		r.c_rid DESC LIMIT 0,3
+	</select>
+
+	<select id="selectAkJobsFromName" parameterType="java.lang.String"
+		resultMap="AkJobsResult">
+		select r.*,m.*,a.a_id,a.a_name from c_recruit r
+		LEFT join c_message m on
+		r.c_mid = m.c_mid
+		LEFT join alljobs a on a.a_id = r.a_id
+		where a.a_name = name
+	</select>
+
+
+</mapper>
