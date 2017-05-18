@@ -13,6 +13,7 @@ public class JlReciuitController {
 
 	@Autowired
 	private JlReciuitService jlReciuitService ;
+	//hello
 	
 	@RequestMapping("jltest")
 	@ResponseBody
