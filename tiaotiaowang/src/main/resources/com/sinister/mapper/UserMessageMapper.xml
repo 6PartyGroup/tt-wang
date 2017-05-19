@@ -57,6 +57,7 @@
 		
 		<if test="userMessage.edu!='' and userMessage.edu!=null">
 			and u_edu = #{userMessage.edu}
+			</if>
 		<if test="userMessage.edu=='1'.toString() ">
 			and (u_edu = "大专"or u_edu ="本科"or u_edu ="硕士"or u_edu ="博士")
 		</if>
@@ -64,6 +65,7 @@
 		<if test="userMessage.workyear!=0">
 			and u_workyear BETWEEN #{userMessage.workyear} and
 			#{userMessage.money}
+			</if>
 		<if test="userMessage.edu=='2'.toString()">
 			and (u_edu ='本科'or u_edu ='硕士'or u_edu ='博士')
 		</if>
@@ -164,5 +166,12 @@
 		WHERE
 		u_mid = #{mid}
 	</update>
-
+	<select id="findUserMessageByUid" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		select * from u_message where u_uid=#{uid}
+	</select>
+	<select id="findAllUserMessage" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		select * from u_message
+	</select>
 </mapper>
