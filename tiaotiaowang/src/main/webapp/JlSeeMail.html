@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+window.onload=function(){
+		
+		 $.ajax({
+             url : "jlfindRecord.do" ,
+             contentType : "application/json;charset=utf-8" ,
+             datatype : "json" ,
+             success :function(result){
+            	 var see = "" ;
+            	 for(var i =0;i<result.length;i++){
+            		 if(result[i].status == "0"){
+            	 	see += "第"+i+"条：";
+            	 	see += "岗位："+result[i].r_jobs+" ;
+            	 	see +=  "求职者简历："+result[i].u_mid+";
+            	 	see += "<input type='button' onclick='like("+result[i].r_rid+")' value='喜欢他，邀约面试'>";
+            	 	see += "<input type='button' onclick='noLike("+result[i].r_rid+")' value='忽略此条信息">';
+            	 	see += "<span id = 'span"+result[i].r_rid+"'></span>" ;}
+            	 	}else if(result[i].status == "1"){
+            	 		see += "第"+i+"条：";
+                	 	see += "岗位："+result[i].r_jobs+" ;
+                	 	see +=  "求职者简历："+result[i].u_mid+";	 
+                	 	see += "<span>已发邀请</span>" ;}
+            	 			
+            	 	}
+            	 $("#hehe").html(see);
+            	 }
+            	 
+             }
+	})
+}
+
+		 function like(r_rid){
+			 
+			 $.ajax({
+				 url : "jlupdateStatusTo1.do" ,
+	             contentType : "application/json;charset=utf-8" ,
+	             datatype : "json" ,
+	             data : JSON.stringify(r_rid),
+	             success :function(result){
+			 			$("#span"+r_rid).html("已邀请");
+			 })
+			 
+		 }
+			 
+			 function like(r_rid){
+				 
+				 $.ajax({
+					 url : "jlupdateStatusTo2.do" ,
+		             contentType : "application/json;charset=utf-8" ,
+		             datatype : "json" ,
+		             data : JSON.stringify(r_rid),
+		             success :function(result){
+				 			$("#span"+r_rid).html("已处理");
+				 })
+				 
+			 }
+			 
+</script>
+</head>
+<body>
+	
+	
+
+<div id="hehe"></div>
+</body>
+</html>
