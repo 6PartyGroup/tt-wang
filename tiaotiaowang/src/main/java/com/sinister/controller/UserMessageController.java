@@ -39,17 +39,17 @@ public class UserMessageController {
 
 		HttpSession session = request.getSession();
 			
-		//Ä¬ÈÏÍ·ÏñµØÖ·
+		//Ä¬ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ö·
 		userMessage.setLogo("dddd/");
 		
-		// ¼òÀúĞŞ¸ÄÊ±¼ä
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½Ê±ï¿½ï¿½
 		Date date = new Date(System.currentTimeMillis());
 		userMessage.setTime(date);
 
-		// ¼òÀú×´Ì¬ 0ÎªÄÜ±»²éµ½ 1Îª²»ÄÜ±»²éµ½
+		// ï¿½ï¿½ï¿½ï¿½×´Ì¬ 0Îªï¿½Ü±ï¿½ï¿½éµ½ 1Îªï¿½ï¿½ï¿½Ü±ï¿½ï¿½éµ½
 		userMessage.setStatus(0);
 
-		// userÍâ¼ü
+		// userï¿½ï¿½ï¿½
 		Integer uid = (Integer) session.getAttribute("uid");
 		User user = new User();
 		user.setUid(uid);
@@ -97,14 +97,15 @@ public class UserMessageController {
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("page", page);
 		m.put("userMessage", usermessage);
-		List<UserMessage> list = userMessageService.findUserMessage(m);
 		System.out.println(usermessage.getWorkyear());
 		System.out.println(usermessage.getMoney());
 		System.out.println(usermessage.getAge());
 		System.out.println(usermessage.getStatus());
 		System.out.println(usermessage.getSex());
+		System.out.println(usermessage.getEdu());
+		List<UserMessage> list = userMessageService.findUserMessage(m);
+
 		System.out.println(list.size() == 0);
-		System.out.println(list);
 
 		if (list.size() != 0) {
 			ModelUserMessage model = new ModelUserMessage();
