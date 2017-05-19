@@ -18,4 +18,6 @@ public interface UserMessageService {
 
 	UserMessage findUserMessageById(Integer uid);
 
+	UserMessage findMessageByUid(Integer uid);
+
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var html="";
+		$.ajax({
+			url : "findMessageByUid.do",
+			type : "post",
+			contentType : "application/json;charset=utf-8",
+			datatype : "json",
+			success : function(result) {
+				html+=
+					"姓名<input type='text' id='name' value='"+result.name+"'><br>"+
+					"性别<input type='text' id='sex' value='"+result.sex+"'><br>"+
+					"年龄<input type='text' id='age' value='"+result.age+"'><br>"+
+					"学校<input type='text' id='school' value='"+result.school+"'><br>"+
+					"学历<input type='text' id='edu' value='"+result.edu+"'><br>"+
+					"工作年限<input type='text' id='workyear' value='"+result.edu+"'><br>"+
+					"电话<input type='text' id='telon' value='"+result.telon+"'><br>"+
+					"邮箱<input type='text' id='email' value='"+result.email+"'><br>"+
+					"专业<input type='text' id='major' value='"+result.major+"'><br>"+
+					"工作经历<input type='text' id='work' value='"+result.work+"'><br>"+
+					"求职岗位<input type='text' id='jobs' value='"+result.jobs+"'><br>"+
+					"自我评价<input type='text' id='myself' value='"+result.myself+"'><br>"+
+					"求职薪资<input type='text' id='money' value='"+result.money+"'><br>"+
+					"专业技能<input type='text' id='skill' value='"+result.skill+"'><br>"+
+					"<input type='button' value='确认修改' onclick='updateMessage()'>"
+				$("#div").append(html);
+			}
+		})
+
+	})
+	
+function updateMessage() {
+		var message={};
+		message.name=$("#name").val();
+		message.sex=$("#sex").val();
+		message.age=$("#age").val();
+		message.school=$("#school").val();
+		message.edu=$("#edu").val();
+		message.workyear=$("#workyear").val();
+		message.telon=$("#telon").val();
+		message.email=$("#email").val();
+		message.major=$("#major").val();
+		message.work=$("#work").val();
+		message.jobs=$("#jobs").val();
+		message.myself=$("#myself").val();
+		message.money=$("#money").val();
+		message.skill=$("#skill").val();	
+		
+		$.ajax({
+			url : "updateUserMessage.do",
+			type : "post",
+			data : JSON.stringify(message),
+			contentType : "application/json;charset=utf-8",
+			datatype : "json",
+			success : function(result) {
+				if(result=="success"){
+					alert("修改成功");
+					window.location.href="updatemessage.html";
+				}
+			}
+		})
+	
+}	
+	
+	
+</script>
+</head>
+<body>
+	<div id="div"></div>
+
+
+
+</body>
+</html>
