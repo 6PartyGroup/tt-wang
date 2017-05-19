@@ -32,7 +32,6 @@ public class UserController {
 			}
 		}
 		return "fail";
-
 	}
 
 	// ÓÃ»§×¢²á

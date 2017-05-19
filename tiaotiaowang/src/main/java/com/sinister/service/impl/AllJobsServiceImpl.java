@@ -1,5 +1,7 @@
 package com.sinister.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,11 @@ public class AllJobsServiceImpl implements AllJobsService {
 	@Autowired
 	private AllJobsDao allJobsDao;
 	
-	public void get(){
-		for (AllJobs t : allJobsDao.selectAllJobs()) {
-			System.out.println(t.getaName());
-		}
+	
+	public List<AllJobs> get(){
+		return allJobsDao.selectAllJobs();
 	}
+
+
 
 }

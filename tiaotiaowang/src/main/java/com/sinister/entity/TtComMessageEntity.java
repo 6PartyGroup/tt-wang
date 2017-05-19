@@ -6,7 +6,7 @@ public class TtComMessageEntity {
 	private String c_name;
 	private String c_telon;
 	private String c_address;
-	private int c_scale;
+	private String c_scale;
 	private String c_nature; 
 	private String c_logo;
 	private String c_show;
@@ -36,12 +36,11 @@ public class TtComMessageEntity {
 	public void setC_address(String c_address) {
 		this.c_address = c_address;
 	}
-	
-	
-	public int getC_scale() {
+
+	public String getC_scale() {
 		return c_scale;
 	}
-	public void setC_scale(int c_scale) {
+	public void setC_scale(String c_scale) {
 		this.c_scale = c_scale;
 	}
 	public String getC_nature() {

@@ -13,6 +13,7 @@ public class Crecruit {
     private String address;
     private int mid;
     private Cmessage cmessage;
+    private AllJobs alljobs;
     
 	public int getRid() {
 		return rid;
@@ -80,4 +81,12 @@ public class Crecruit {
 	public void setCmessage(Cmessage cmessage) {
 		this.cmessage = cmessage;
 	}
+	public AllJobs getAlljobs() {
+		return alljobs;
+	}
+	public void setAlljobs(AllJobs alljobs) {
+		this.alljobs = alljobs;
+	}
+	
+	
 }
