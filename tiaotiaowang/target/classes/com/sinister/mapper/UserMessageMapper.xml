@@ -1,3 +1,133 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
+<mapper namespace="com.sinister.dao.UserMessageDao">
+	<!-- type属性-实体类 -->
+	<resultMap type="com.sinister.entity.UserMessage" id="UserMessageResult">
+		<!-- 映射字段 数据库—实体类 -->
+		<!-- column数据表字段 ，property 实体类的属性 -->
+		<id column="u_mid" jdbcType="INTEGER" property="mid" />
+		<result column="u_logo" jdbcType="VARCHAR" property="logo" />
+		<result column="u_name" jdbcType="VARCHAR" property="name" />
+		<result column="u_sex" jdbcType="VARCHAR" property="sex" />
+		<result column="u_age" jdbcType="INTEGER" property="age" />
+		<result column="u_school" jdbcType="VARCHAR" property="school" />
+		<result column="u_edu" jdbcType="VARCHAR" property="edu" />
+		<result column="u_workyear" jdbcType="INTEGER" property="workyear" />
+		<result column="u_telon" jdbcType="VARCHAR" property="telon" />
+		<result column="u_email" jdbcType="VARCHAR" property="email" />
+		<result column="u_work" jdbcType="VARCHAR" property="work" />
+		<result column="u_jobs" jdbcType="VARCHAR" property="jobs" />
+		<result column="u_myself" jdbcType="VARCHAR" property="myself" />
+		<result column="u_money" jdbcType="INTEGER" property="money" />
+		<result column="u_skill" jdbcType="VARCHAR" property="skill" />
+		<result column="u_time" jdbcType="DATE" property="time" />
+		<result column="u_status" jdbcType="INTEGER" property="status" />
+		<result column="u_major" jdbcType="VARCHAR" property="major" />
+		<association property="user"
+			resultMap="com.sinister.dao.UserDao.UserResult"></association>
+	</resultMap>
+	<!-- zzz 分页查询 -->
+	<select id="findUserMessage" parameterType="java.util.Map"
+		resultMap="UserMessageResult">
+		SELECT * FROM u_message where 1=1
+		<if test="1==1">
+			and u_status=0
+		</if>
+		<if test="userMessage.sex!='' and userMessage.sex!=null">
+			and u_sex =#{userMessage.sex}
+		</if>
+		<if test="userMessage.age!=null">
+			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
+		</if>
+		<if test="userMessage.edu!='' and userMessage.edu!=null">
+			and u_edu = #{userMessage.edu}
+		</if>
+		<if test="userMessage.workyear!=null">
+			and u_workyear BETWEEN #{userMessage.workyear} and #{userMessage.money}
+		</if>
+	<!-- 	<if test="userMessage.major!='' and userMessage.major!=null">
+			and u_major = #{userMessage.major}
+		</if> -->
+		<if test="userMessage.jobs!='' and userMessage.jobs!=null">
+			and u_jobs like "%"#{userMessage.jobs}"%"
+		</if>
+		ORDER BY u_time DESC
+		limit #{page.dbIndex},#{page.dbNumber}
+	</select>
+	<!-- zzz查询最新更新的5条简历 -->
+	<select id="findUserMessageTime" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		SELECT * FROM u_message where u_status=0 ORDER BY u_time DESC limit 0,5
+	</select>
+	<!-- zzz总数查询 -->
+	<select id="findUserMessageCount" resultType="int">
+		SELECT count(u_mid) FROM
+		u_message where 1=1
+		<if test="1==1">
+			and u_status=0
+		</if>
+		<if test="sex!=null">
+			and u_sex =#{sex}
+		</if>
+		<if test="age!=0">
+			and u_age BETWEEN #{age} and #{status}
+		</if>
+		<if test="edu!=null">
+			and u_edu = #{edu}
+		</if>
+		<if test="workyear!=0">
+			and u_workyear BETWEEN #{workyear} and #{money}
+		</if>
+		<if test="major!=null">
+			and u_major = #{major}
+		</if>
+		<if test="jobs!=null">
+			and u_jobs like "%"#{jobs}"%"
+		</if>
+		ORDER BY u_time DESC
+	</select>
+	<!-- 个人信息填写 -->
+	<insert id="saveUserMessage" parameterType="com.sinister.entity.UserMessage"
+		useGeneratedKeys="true">
+		insert into u_message
+		(u_logo,u_name,u_sex,u_age,u_edu,u_workyear,u_telon,u_email,
+		u_work,u_jobs,u_myself,u_money,u_skill,u_time,u_status,u_uid)
+		values
+		(#{logo},#{name},#{sex},#{age},#{edu},#{workyear},#{telon},
+		#{email},#{work},#{jobs},#{myself},#{money},#{skill},#{time},#{status},#{user.uid})
+	</insert>
+
+	<!--个人信息修改 -->
+	<update id="updateUserMessage" parameterType="com.sinister.entity.UserMessage">
+
+		update user
+		<set>
+			<if test="logo!=null">u_logo =#{logo},</if>
+			<if test="name!=null">u_name = #{name},</if>
+			<if test="sex!=null">u_sex =#{sex},</if>
+			<if test="age!=null">u_age =#{age},</if>
+			<if test="edu!=null">u_edu =#{edu},</if>
+			<if test="workyear!=null">u_workyear =#{workyear},</if>
+			<if test="telon!=null">u_telon =#{telon},</if>
+			<if test="email!=null">u_email =#{email},</if>
+			<if test="work!=null">u_work =#{work},</if>
+			<if test="jobs!=null">u_jobs =#{jobs},</if>
+			<if test="myself!=null">u_myself=#{myself}</if>
+			<if test="money!=null">u_money=#{money}</if>
+			<if test="skill!=null">u_skill=#{skill}</if>
+			<if test="time!=null">u_time=#{time}</if>
+			<if test="status!=null">u_status=#{status}</if>
+		</set>
+		WHERE
+		u_mid = #{mid}
+	</update>
+
+</mapper>
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -125,3 +255,4 @@
 	</update>
 
 </mapper>
+>>>>>>> e98d6d17e40aa578f8bc28d5d84692b7107338b0
