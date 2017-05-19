@@ -7,4 +7,7 @@ import com.sinister.entity.AllJobs;
 public interface AllJobsService {
 
 	public List<AllJobs> get();
+	
+
+	
 }
