@@ -8,7 +8,7 @@ public class JlRecord {
 	private int r_status;
 	private String r_time;
 	private int u_mid;
-//gjkgkjkk
+
 	public int getR_rid() {
 		return r_rid;
 	}

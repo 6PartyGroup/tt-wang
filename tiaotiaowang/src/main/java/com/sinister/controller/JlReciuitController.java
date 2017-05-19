@@ -63,7 +63,7 @@ public class JlReciuitController {
 	public List<JlRecord> findComRecord(HttpServletRequest rreq){
 		HttpSession session = rreq.getSession();
 		TtCom ttCom = (TtCom) session.getAttribute("Com");
-		List<JlRecord> list = jlReciuitService.findComRecord(ttCom.getC_id());
+		List<JlRecord> list = jlReciuitService.findComRecord(1);
 		return list ;
 	}
  	
