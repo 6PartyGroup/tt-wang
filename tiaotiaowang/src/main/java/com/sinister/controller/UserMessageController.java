@@ -13,12 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sinister.entity.ModelUserMessage;
@@ -38,53 +40,69 @@ public class UserMessageController {
 	public String saveUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-			
-		//默认头像地址
+
+		// morentouxiang
 		userMessage.setLogo("dddd/");
-		
-		// 简历修改时间
+
+		// shijian
 		Date date = new Date(System.currentTimeMillis());
 		userMessage.setTime(date);
 
-		// 简历状态 0为能被查到 1为不能被查到
+		// zhuangtai
 		userMessage.setStatus(0);
 
-		// user外键
+		// user waijian
 		Integer uid = (Integer) session.getAttribute("uid");
 		User user = new User();
 		user.setUid(uid);
 		userMessage.setUser(user);
 		userMessageService.saveUserMessage(userMessage);
 
-		return null;
+		return "success";
 	}
 
-	@RequestMapping("updateUserMessageTopFile.do")
+	@RequestMapping(value = "updatetopfile.do", method = RequestMethod.POST)
 	public String updateUserMessageTopFile(@RequestParam("file") MultipartFile file, HttpServletRequest request)
 			throws IOException {
 		if (!file.isEmpty()) {
 			FileUtils.copyInputStreamToFile(file.getInputStream(),
-					new File("C:\\Users\\sunlei\\Desktop\\topfile\\", file.getOriginalFilename()));
+					new File("C:\\Users\\Shinelon\\Desktop\\topfile", file.getOriginalFilename()));
 		}
 		String filename = file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Integer uid = (Integer) session.getAttribute("uid");
-		UserMessage userMessage = userMessageService.findUserMessageById(uid);
+		UserMessage userMessage = userMessageService.findMessageByUid(uid);
 		String fn = userMessage.getLogo();
 		if (filename == "") {
 			userMessage.setLogo(fn);
 		} else {
 			userMessage.setLogo("/dddd/" + filename);
 		}
+		Integer mid = (Integer) session.getAttribute("mid");
+		userMessage.setMid(mid);
 		userMessageService.updateUserMessage(userMessage);
-		return "index";
+		return "login";
 
 	}
 
+	@RequestMapping("findMessageByUid.do")
+	@ResponseBody
+	public UserMessage findMessageByUid(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Integer uid = (Integer) session.getAttribute("uid");
+		UserMessage userMessage = userMessageService.findMessageByUid(uid);
+		session.setAttribute("mid", userMessage.getMid());
+		return userMessage;
+	}
+
 	@RequestMapping("updateUserMessage.do")
-	public String updateUserMessage(@RequestBody UserMessage userMessage) {
+	@ResponseBody
+	public String updateUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Integer mid = (Integer) session.getAttribute("mid");
+		userMessage.setMid(mid);
 		userMessageService.updateUserMessage(userMessage);
-		return null;
+		return "success";
 	}
 
 	@RequestMapping(value = "findUserMessage.do", method = RequestMethod.POST)
