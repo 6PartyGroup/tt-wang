@@ -16,21 +16,24 @@ public class JlReciuitServiceImpl implements JlReciuitService{
 	@Autowired
 	private JlReciuitDao jlReciuitDao ;
 	
-	/**
-	 * service����Dao������Ƹ��Ϣ
-	 */
+
 	public void JlSaveReciuit(JlReciuit jlReciuit) {
 		jlReciuitDao.JlSaveReciuit(jlReciuit);
 	}
 
 	public int jlFindComId(int c_id) {
-		
 		return jlReciuitDao.jlFindComId(c_id);
 	}
 
-	public List<JlRecord> findComRecord(int c_mid) {
+	public List<JlRecord> findComRecord(int c_cid) {	
+		return jlReciuitDao.findComRecord(c_cid);
+	}
+
+	public void jlupdateStatusTo1(int c_cid) {
+	}
+
+	public void jlupdateStatusTo2(int c_cid) {
 		
-		return null;
 	}
 
 	

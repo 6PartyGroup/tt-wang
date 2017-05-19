@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sinister.entity.AllJobs;
 import com.sinister.entity.JlReciuit;
+import com.sinister.entity.JlRecord;
 import com.sinister.entity.TtCom;
 import com.sinister.service.AllJobsService;
 import com.sinister.service.JlReciuitService;
@@ -30,7 +31,13 @@ public class JlReciuitController {
 	@RequestMapping("jlFindAllJobs.do")
 	@ResponseBody
 	public List<AllJobs> findAllJobs() {
-		return allJobsService.get();
+		
+		List<AllJobs> list = allJobsService.get();
+		for (AllJobs allJobs : list) {
+			System.out.println(allJobs.getaName());
+		}
+		
+		return list;
 	}
 
 
@@ -49,13 +56,37 @@ public class JlReciuitController {
 		return "saveSuccess";
 	}
 
-	//企业查询简历投递情况
+	//企业查询简历投递情况  
 	//在简历投递记录中查找，并且输出当前公司的简历
+	@RequestMapping("/jlfindRecord.do")
+	@ResponseBody
+	public List<JlRecord> findComRecord(HttpServletRequest rreq){
+		HttpSession session = rreq.getSession();
+		TtCom ttCom = (TtCom) session.getAttribute("Com");
+		List<JlRecord> list = jlReciuitService.findComRecord(ttCom.getC_id());
+		return list ;
+	}
+ 	
+	//将简历状态改成1（已查看）
+	@RequestMapping("jlupdateStatusTo1")
+	@ResponseBody
+	public String jlupdateStatusTo1(HttpServletRequest rr){
+		HttpSession session = rr.getSession();
+		TtCom ttCom = (TtCom)session.getAttribute("Com");
+		jlReciuitService.jlupdateStatusTo1(ttCom.getC_id());	
+		return "jlUpdateSuccess" ;
+	}
 	
-	
-	
-	
-	
+	//将简历状态改成2（面试邀约）
+		@RequestMapping("jlupdateStatusTo2")
+		@ResponseBody
+		public String jlupdateStatusTo2(HttpServletRequest rr){
+			HttpSession session = rr.getSession();
+			TtCom ttCom = (TtCom)session.getAttribute("Com");
+			jlReciuitService.jlupdateStatusTo1(ttCom.getC_id());	
+			return "jlUpdateSuccess" ;
+		}
+		
 	
 	
 	
