@@ -2,12 +2,10 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
+<!-- 查找简历的Mapper -->
 <mapper namespace="com.sinister.dao.JlReciuitDao">
-	<!-- type属性-实体类 -->
+
 	<resultMap type="com.sinister.entity.JlRecord" id="JlRecordResultMapper">
-		<!-- 映射字段 数据库—实体类 -->
-		<!-- column数据表字段 ，property 实体类的属性 -->
 		<id column="c_rid" jdbcType="INTEGER" property="c_rid" />
 		<result column="r_jobs" jdbcType="INTEGER" property="r_jobs" />
 		<result column="c_mid" jdbcType="INTEGER" property="c_mid" />
@@ -17,7 +15,32 @@
 	</resultMap>
 
 
+	<select id="findComRecord" parameterType="int" resultMap="JlRecordResultMapper">
+		select * from c_recruit
+		WHERE c_mid in(
+		select c_mid from c_message
+		where c_cid = #{c_cid}
+		)
+	</select>
 
+
+<update id="jlupdateStatusTo1" parameterType="int">
+<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态）-->
+UPDATE record set r_status = 1
+		WHERE c_mid in (
+			select c_mid from c_message 
+					where c_cid = #{c_cid} 
+)
+</update>
+
+<update id="jlupdateStatusTo2" parameterType="int">
+<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态）-->
+UPDATE record set r_status = 2
+		WHERE c_mid in (
+			select c_mid from c_message 
+					where c_cid = #{c_cid}  
+)
+</update>
 
 
 

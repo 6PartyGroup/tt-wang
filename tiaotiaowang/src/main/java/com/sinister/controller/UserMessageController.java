@@ -90,6 +90,7 @@ public class UserMessageController {
 	@RequestMapping(value = "findUserMessage.do", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelUserMessage findUserMessage(@RequestBody UserMessage usermessage) {
+
 		Page page = new Page();
 		page.setCurrentPage(usermessage.getMid());
 		page.setTotalNumber(userMessageService.findUserMessageCount(usermessage));
@@ -97,7 +98,11 @@ public class UserMessageController {
 		m.put("page", page);
 		m.put("userMessage", usermessage);
 		List<UserMessage> list = userMessageService.findUserMessage(m);
-
+		System.out.println(usermessage.getWorkyear());
+		System.out.println(usermessage.getMoney());
+		System.out.println(usermessage.getAge());
+		System.out.println(usermessage.getStatus());
+		System.out.println(usermessage.getSex());
 		System.out.println(list.size() == 0);
 		System.out.println(list);
 
