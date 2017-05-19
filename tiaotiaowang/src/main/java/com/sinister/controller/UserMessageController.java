@@ -77,7 +77,6 @@ public class UserMessageController {
 			userMessage.setLogo("/dddd/" + filename);
 		}
 		userMessageService.updateUserMessage(userMessage);
-<<<<<<< HEAD
 		return "updatemessage";
 	}
 
@@ -89,10 +88,6 @@ public class UserMessageController {
 		UserMessage userMessage = userMessageService.findMessageByUid(uid);
 		session.setAttribute("mid", userMessage.getMid());
 		return userMessage;
-=======
-		return "index";
-
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 	}
 
 	@RequestMapping("updateUserMessage.do")
