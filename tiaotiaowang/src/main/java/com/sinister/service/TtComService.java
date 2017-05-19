@@ -18,5 +18,9 @@ public interface TtComService {
 	public TtComMessageEntity findcomMessage_name(TtComMessageEntity comMessageEntity);
 	public void saveComMessagefile(TtComMessageEntity cME);
 	public TtComMessageEntity findcomMessage_logo(TtComMessageEntity cME);
+	public TtComMessageEntity showComMessage(TtComMessageEntity ttCom);
+	public TtComMessageEntity shoComTou(TtCom ttCom);
+	public List<TtComMessageEntity> findcomImg();
+	public void updateNewMessage(TtComMessageEntity comMessageEntity);
 
 }

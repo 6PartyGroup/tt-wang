@@ -80,7 +80,7 @@ public class TtComController {
 	// 跳转完善个人信息
 	@RequestMapping("loginTtCom.do")
 	public String loginTtCom() {
-		return "redirect:http://localhost:8080/comMessage.html";
+		return "redirect:http://localhost:8080/TtComupload.html";
 	}
 
 }
