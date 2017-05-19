@@ -23,37 +23,37 @@ public class JlReciuitController {
 	@Autowired
 	private JlReciuitService jlReciuitService;
 
-	// ²éÕÒ¹¤×÷µÄ´ó·ÖÀà
+	// ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/JlfindJobs.do")
 	@ResponseBody
 	public List<AllJobs> JlfindJobs() {
 		return jlReciuitService.JlFindJobs();
 	}
 
-	// ²éÕÒ¹¤×÷µÄ´ó·ÖÀàÏÂµÄ¾ßÌåÖ°Î»
+	// ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¾ï¿½ï¿½ï¿½Ö°Î»
 	@RequestMapping("/JlfindSmallJobs.do")
 	@ResponseBody
 	public List<AllJobs> JlfindSmallJobs(int a_id) {
 		return jlReciuitService.JlfindSmallJob(a_id);
 	}
 
-	// JL Controller²ã±£´æÕÐÆ¸ÐÅÏ¢
+	// JL Controllerï¿½ã±£ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½Ï¢
 	@RequestMapping("JlSaveReciuit.do")
 	@ResponseBody
 	public String JlSaveReciuit(@RequestBody JlReciuit jlReciuit, HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
 		TtCom ttCom = (TtCom) session.getAttribute("Com");
-		// Ê¹ÓÃ¹«Ë¾µÇÂ½Ê±µÄÕËºÅid²éÑ¯¹«Ë¾µÄ¾ßÌåÐÅÏ¢µÄidÖµ£¬²¢½«²éÑ¯½á¹û´«ÈëjlReciuit.setC_mid
-		int i = jlReciuitService.jlFindComId(ttCom.getC_id());
-		// ÊéÐ´·¢²¼¼òÀú¹«Ë¾µÄ¹«Ë¾ÐÅÏ¢idÖµ
+		// Ê¹ï¿½Ã¹ï¿½Ë¾ï¿½ï¿½Â½Ê±ï¿½ï¿½ï¿½Ëºï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½Ë¾ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½idÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jlReciuit.setC_mid
+		int i = jlReciuitService.jlFindComId(ttCom.getC_cid());
+		// ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¾ï¿½Ä¹ï¿½Ë¾ï¿½ï¿½Ï¢idÖµ
 		jlReciuit.setC_mid(i);
 		jlReciuitService.JlSaveReciuit(jlReciuit);
 		return "saveSuccess";
 	}
 
-	// ÆóÒµ²éÑ¯¼òÀúÍ¶µÝÇé¿ö
-	// ÔÚ¼òÀúÍ¶µÝ¼ÇÂ¼ÖÐ²éÕÒ£¬²¢ÇÒÊä³öµ±Ç°¹«Ë¾µÄ¼òÀú
+	// ï¿½ï¿½Òµï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	// ï¿½Ú¼ï¿½ï¿½ï¿½Í¶ï¿½Ý¼ï¿½Â¼ï¿½Ð²ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ë¾ï¿½Ä¼ï¿½ï¿½ï¿½
 	@RequestMapping("/jlfindRecord.do")
 	@ResponseBody
 	public List<JlRecord> findComRecord(HttpServletRequest rreq) {
@@ -63,7 +63,7 @@ public class JlReciuitController {
 		return list;
 	}
 
-	// ½«¼òÀú×´Ì¬¸Ä³É1£¨ÒÑ²é¿´£©
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä³ï¿½1ï¿½ï¿½ï¿½Ñ²é¿´ï¿½ï¿½
 	@RequestMapping("jlupdateStatusTo1.do")
 	@ResponseBody
 	public String jlupdateStatusTo1(int r_rid) {
@@ -72,7 +72,7 @@ public class JlReciuitController {
 		return "jlUpdateSuccess";
 	}
 
-	// ½«¼òÀú×´Ì¬¸Ä³É2£¨ÃæÊÔÑûÔ¼£©
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä³ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½
 	@RequestMapping("jlupdateStatusTo2.do")
 	@ResponseBody
 	public String jlupdateStatusTo2(int r_rid) {
