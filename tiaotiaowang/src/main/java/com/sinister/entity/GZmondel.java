@@ -2,28 +2,22 @@ package com.sinister.entity;
 
 public class GZmondel {
 	
-	private AllJobs alljobs;
-	private Cmessage cmessage;
-	private Crecruit crecruit;
+	private String aName;
+	private String name;
+	public String getaName() {
+		return aName;
+	}
+	public void setaName(String aName) {
+		this.aName = aName;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
-	public AllJobs getAlljobs() {
-		return alljobs;
-	}
-	public void setAlljobs(AllJobs alljobs) {
-		this.alljobs = alljobs;
-	}
-	public Cmessage getCmessage() {
-		return cmessage;
-	}
-	public void setCmessage(Cmessage cmessage) {
-		this.cmessage = cmessage;
-	}
-	public Crecruit getCrecruit() {
-		return crecruit;
-	}
-	public void setCrecruit(Crecruit crecruit) {
-		this.crecruit = crecruit;
-	}
+	
 	
 
 }
