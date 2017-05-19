@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+function saveMessage() {
+	var message={};
+	message.name=$("#name").val();
+	message.sex=$("#sex").val();
+	message.age=$("#age").val();
+	message.school=$("#school").val();
+	message.edu=$("#edu").val();
+	message.workyear=$("#workyear").val();
+	message.telon=$("#telon").val();
+	message.email=$("#email").val();
+	message.major=$("#major").val();
+	message.work=$("#work").val();
+	message.jobs=$("#jobs").val();
+	message.myself=$("#myself").val();
+	message.money=$("#money").val();
+	message.skill=$("#skill").val();	
+	
+	$.ajax({
+		url : "saveUserMessage.do",
+		type : "post",
+		data : JSON.stringify(message),
+		contentType : "application/json;charset=utf-8",
+		datatype : "json",
+		success : function(result) {
+			if(result=="success"){
+				alert("添加成功");
+			}
+		}
+	})
+}
+
+</script>
+</head>
+<body>
+<form action="upload" method="post" enctype="multipart/form-data">   
+   <input type="file" name="file"/>
+   <input type="submit" value="提交">
+</form>
+姓名<input type="text" id="name"><br>
+性别<input type="text" id="sex"><br>
+年龄<input type="text" id="age"><br>
+学校<input type="text" id="school"><br>x
+学历<input type="text" id="edu"><br>
+工作年限<input type="text" id="workyear"><br>
+电话<input type="text" id="telon"><br>
+邮箱<input type="text" id="email"><br>
+专业<input type="text" id="major"><br>
+工作经历<input type="text" id="work"><br>
+求职岗位<input type="text" id="jobs"><br>
+自我评价<input type="text" id="myself"><br>
+求职薪资<input type="text" id="money"><br>
+专业技能<input type="text" id="skill"><br>
+<input type="button" value="提交" onclick="saveMessage()">
+</body>
+</html>

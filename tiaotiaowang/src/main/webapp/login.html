@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript">
+        function login() {
+            var user = {};
+            user.username = $("#username").val();
+            user.password = $("#password").val();
+            $.ajax({
+                type: "post",
+                url: "sl_userlogin.do",
+                data: JSON.stringify(user),
+                datatype: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function (result) {
+                    if (result == "success") {
+                        alert("登陆成功")
+                    } else {
+                        alert("账号密码错误")
+                    }
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+
+账号
+<input type="text" id="username">
+<br> 密码
+<input type="text" id="password">
+<br>
+<input type="button" value="登录" onclick="login()">
+
+
+</body>
+</html>
