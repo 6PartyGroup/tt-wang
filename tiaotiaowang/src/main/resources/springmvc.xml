@@ -69,9 +69,6 @@
 		<!-- <mvc:exclude-mapping path="/in" /> -->
 		<!-- <bean class="com.lanou.interceptor.LoginInterceptor"></bean> </mvc:interceptor> 
 			</mvc:interceptors> -->
-	
-<<<<<<< HEAD
-=======
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">  
      <property name="urlMap">  
          <map>  
@@ -103,5 +100,4 @@
 			<!-- <bean class="com.lanou.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors> -->
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 </beans>
