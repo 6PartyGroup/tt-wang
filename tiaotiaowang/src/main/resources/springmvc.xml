@@ -40,28 +40,6 @@
 		<property name="maxUploadSize" value="5242000"></property>
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
-
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="urlMap">
-			<map>
-				<entry key="/**" value="myResourceHandler" />
-			</map>
-		</property>
-		<property name="order" value="100000" />
-	</bean>
-
-
-	<bean id="myResourceHandler" name="myResourceHandler"
-		class="org.springframework.web.servlet.resource.ResourceHttpRequestHandler">
-		<property name="locations" value="/" />
-		<property name="supportedMethods">
-			<list>
-				<value>GET</value>
-				<value>HEAD</value>
-				<value>POST</value>
-			</list>
-		</property>
-		</bean>
 		<!-- ================================拦截器====================================== -->
 		<!-- <mvc:interceptors> <mvc:interceptor> 默认拦截的连接 <mvc:mapping path="/cheakUserName" 
 			/> -->
