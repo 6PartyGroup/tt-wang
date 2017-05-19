@@ -79,7 +79,7 @@
 </bean>  
   
   
-<bean id="myResourceHandler" name="myResourceHandler"  
+<!-- <bean id="myResourceHandler" name="myResourceHandler"  
       class="org.springframework.web.servlet.resource.ResourceHttpRequestHandler">  
       <property name="locations" value="/" />  
       <property name="supportedMethods">  
@@ -89,7 +89,7 @@
             <value>POST</value>  
          </list>  
      </property>  
-     </bean>
+     </bean> -->
 	<!-- ================================拦截器====================================== -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
