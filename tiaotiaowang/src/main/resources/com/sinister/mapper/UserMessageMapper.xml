@@ -40,11 +40,17 @@
 		<if test="userMessage.sex!='' and userMessage.sex!=null">
 			and u_sex =#{userMessage.sex}
 		</if>
+<<<<<<< HEAD
 
 		<if test="userMessage.age!=0">
 			and u_age BETWEEN #{userMessage.age} and
 			#{userMessage.status}
+=======
+		<if test="userMessage.age!=null">
+			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		</if>
+<<<<<<< HEAD
 		
 		<if test="userMessage.age!=null">
 			and u_age BETWEEN #{userMessage.age} and
@@ -54,12 +60,31 @@
 		
 		<if test="userMessage.edu!='' and userMessage.edu!=null">
 			and u_edu = #{userMessage.edu}
+=======
+		<if test="userMessage.edu=='1'.toString() ">
+			and (u_edu = "大专"or u_edu ="本科"or u_edu ="硕士"or u_edu ="博士")
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		</if>
+<<<<<<< HEAD
 
 		<if test="userMessage.workyear!=0">
 			and u_workyear BETWEEN #{userMessage.workyear} and
 			#{userMessage.money}
+=======
+		<if test="userMessage.edu=='2'.toString()">
+			and (u_edu ='本科'or u_edu ='硕士'or u_edu ='博士')
 		</if>
+		<if test="userMessage.edu=='3'.toString()">
+			and (u_edu = "硕士"or u_edu="博士")
+		</if>
+		<if test="userMessage.edu =='博士'.toString()">
+			and (u_edu = #{userMessage.edu})
+		</if>
+		<if test="userMessage.workyear!=null and userMessage.money !=null">
+			and u_workyear BETWEEN #{userMessage.workyear} and #{userMessage.money}
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
+		</if>
+<<<<<<< HEAD
 		<if test="userMessage.workyear!=null">
 			and u_workyear BETWEEN #{userMessage.workyear} and
 			#{userMessage.money}
@@ -67,8 +92,11 @@
 		</if>
 		<!-- <if test="userMessage.major!='' and userMessage.major!=null"> and 
 			u_major = #{userMessage.major} </if> -->
+=======
+
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		<if test="userMessage.jobs!='' and userMessage.jobs!=null">
-			and u_jobs like "%"#{userMessage.jobs}"%"
+			and u_jobs like CONCAT("%",#{userMessage.jobs},"%")
 		</if>
 		ORDER BY u_time DESC
 		limit #{page.dbIndex},#{page.dbNumber}
@@ -78,8 +106,7 @@
 	<!-- zzz查询最新更新的5条简历 -->
 	<select id="findUserMessageTime" parameterType="com.sinister.entity.UserMessage"
 		resultMap="UserMessageResult">
-		SELECT * FROM u_message where u_status=0 ORDER BY u_time
-		DESC limit 0,5
+		SELECT * FROM u_message where u_status=0 ORDER BY u_time DESC limit 0,5
 	</select>
 	<!-- zzz总数查询 -->
 	<select id="findUserMessageCount" resultType="int">
@@ -88,23 +115,30 @@
 		<if test="1==1">
 			and u_status=0
 		</if>
-		<if test="sex!=null">
+		<if test="sex!='' and sex!=null">
 			and u_sex =#{sex}
 		</if>
-		<if test="age!=0">
+		<if test="age!=null">
 			and u_age BETWEEN #{age} and #{status}
 		</if>
-		<if test="edu!=null">
-			and u_edu = #{edu}
+		<if test="edu=='1'.toString() ">
+			and (u_edu = "大专"or u_edu ="本科"or u_edu ="硕士"or u_edu ="博士")
 		</if>
-		<if test="workyear!=0">
+		<if test="edu=='2'.toString()">
+			and (u_edu ='本科'or u_edu ='硕士'or u_edu ='博士')
+		</if>
+		<if test="edu=='3'.toString()">
+			and (u_edu = "硕士"or u_edu="博士")
+		</if>
+		<if test="edu =='博士'.toString()">
+			and (u_edu = #{edu})
+		</if>
+		<if test="workyear!=null and money !=null">
 			and u_workyear BETWEEN #{workyear} and #{money}
 		</if>
-		<if test="major!=null">
-			and u_major = #{major}
-		</if>
-		<if test="jobs!=null">
-			and u_jobs like "%"#{jobs}"%"
+
+		<if test="jobs!='' and jobs!=null">
+			and u_jobs like CONCAT("%",#{jobs},"%")
 		</if>
 		ORDER BY u_time DESC
 	</select>
@@ -121,33 +155,26 @@
 
 	<!--个人信息修改 -->
 	<update id="updateUserMessage" parameterType="com.sinister.entity.UserMessage">
-		update u_message
+		update user
 		<set>
 			<if test="logo!=null">u_logo =#{logo},</if>
 			<if test="name!=null">u_name = #{name},</if>
 			<if test="sex!=null">u_sex =#{sex},</if>
 			<if test="age!=null">u_age =#{age},</if>
 			<if test="edu!=null">u_edu =#{edu},</if>
-			<if test="edu!=null">u_school=#{school},</if>
 			<if test="workyear!=null">u_workyear =#{workyear},</if>
 			<if test="telon!=null">u_telon =#{telon},</if>
 			<if test="email!=null">u_email =#{email},</if>
-			<if test="skill!=null">u_major=#{major},</if>
 			<if test="work!=null">u_work =#{work},</if>
 			<if test="jobs!=null">u_jobs =#{jobs},</if>
-			<if test="myself!=null">u_myself=#{myself},</if>
-			<if test="money!=null">u_money=#{money},</if>
-			<if test="skill!=null">u_skill=#{skill},</if>
-			<if test="time!=null">u_time=#{time},</if>
+			<if test="myself!=null">u_myself=#{myself}</if>
+			<if test="money!=null">u_money=#{money}</if>
+			<if test="skill!=null">u_skill=#{skill}</if>
+			<if test="time!=null">u_time=#{time}</if>
 			<if test="status!=null">u_status=#{status}</if>
 		</set>
 		WHERE
 		u_mid = #{mid}
 	</update>
-
-	<select id="findUserMessageByUid" parameterType="com.sinister.entity.UserMessage"
-		resultMap="UserMessageResult">
-		select * from u_message where u_uid=#{uid}
-	</select>
 
 </mapper>

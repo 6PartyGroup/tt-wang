@@ -3,35 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <script typet="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script>
-        $(function(){
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+  <script>
+  window.onload=function(){
                     $.ajax({
-                        url : "jlFindAllJobs.do" ,
+                        url : "JlfindJobs.do" ,
                         contentType : "application/json;charset=utf-8" ,
                         datatype : "json" ,
                         success :function(result){
+							var html = "";
+                           for(var i = 0 ;i < result.length;i++){
+                        	   
+                        	   html += "<a href='javascript:JlSmallJobs("+result[i].aId+")'>"+result[i].aName+"</a><br>"                  	   
+                           }
 
-                            alert("find success");
-
+                           $("#hello").html(html);
                         }
-
-
-
-
             })
+        }
 
-
-
-        })
-
+  function JlSmallJobs(a){
+	  $.ajax({
+          url : "JlfindSmallJobs.do" ,
+          contentType : "application/json;charset=utf-8" ,
+          datatype : "json" ,
+          data : JSON.stringify(a),
+         
+          success :function(result){
+        	  var html = "" ;
+        	  for(var i = 0 ;i<result.length;i++){
+        		  
+        		  html += "<a href='javascript:JlSmallJobs("+result[i].aId+")'>"+result[i].aName+"</a><br>";
+        		  
+        	  }
+        	  $("#helloo").html(html);
+        	  
+          }
+	  })
+	  
+	  
+	  
+  }
 
     </script>
 
 </head>
 <body>
+<div id="hello">
+	<div id="helloo"></div>
+</div>
+	招聘岗位：...
+<div id="allJobs"></div>
+岗位职责：<input type="text" id="c_duty"><br>
+岗位要求<input type="text" id="c_requirement"><br>
+薪资范围<input type="text" id="c_money"><br>
+工作年限<input type="text" id="c_workyear"><br>
+招聘人数<input type="text" id="c_number"><br>
+学历要求<input type="text" id="c_edu"><br>
+工作地点<input type="text" id="c_address"><br>
 
-	<input type=>
+<input type="button" onclick="JlSaveRecruit()" value="确认提交招聘信息">
 
 
 </body>

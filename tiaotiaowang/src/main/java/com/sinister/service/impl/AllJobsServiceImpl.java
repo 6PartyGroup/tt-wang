@@ -15,8 +15,11 @@ public class AllJobsServiceImpl implements AllJobsService {
 	@Autowired
 	private AllJobsDao allJobsDao;
 	
+	
 	public List<AllJobs> get(){
 		return allJobsDao.selectAllJobs();
 	}
+
+
 
 }

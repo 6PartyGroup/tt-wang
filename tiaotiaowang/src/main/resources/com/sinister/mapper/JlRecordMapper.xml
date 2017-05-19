@@ -6,7 +6,7 @@
 <mapper namespace="com.sinister.dao.JlReciuitDao">
 
 	<resultMap type="com.sinister.entity.JlRecord" id="JlRecordResultMapper">
-		<id column="c_rid" jdbcType="INTEGER" property="c_rid" />
+		<id column="r_rid" jdbcType="INTEGER" property="r_rid" />
 		<result column="r_jobs" jdbcType="INTEGER" property="r_jobs" />
 		<result column="c_mid" jdbcType="INTEGER" property="c_mid" />
 		<result column="r_status" jdbcType="INTEGER" property="r_status" />
@@ -16,31 +16,29 @@
 
 
 	<select id="findComRecord" parameterType="int" resultMap="JlRecordResultMapper">
-		select * from c_recruit
+		select
+		* from c_recruit
 		WHERE c_mid in(
 		select c_mid from c_message
-		where c_cid = #{c_cid}
+		where c_cid
+		= #{c_cid}
 		)
 	</select>
 
 
-<update id="jlupdateStatusTo1" parameterType="int">
-<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态）-->
-UPDATE record set r_status = 1
-		WHERE c_mid in (
-			select c_mid from c_message 
-					where c_cid = #{c_cid} 
-)
-</update>
+	<update id="jlupdateStatusTo1" parameterType="int">
+		<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态） -->
+		UPDATE record set r_status = 1
+		WHERE r_rid = #{c_cid}
+		)
+	</update>
 
-<update id="jlupdateStatusTo2" parameterType="int">
-<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态）-->
-UPDATE record set r_status = 2
-		WHERE c_mid in (
-			select c_mid from c_message 
-					where c_cid = #{c_cid}  
-)
-</update>
+	<update id="jlupdateStatusTo2" parameterType="int">
+		<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态） -->
+		UPDATE record set r_status = 2
+		WHERE r_rid = #{c_cid}
+		)
+	</update>
 
 
 

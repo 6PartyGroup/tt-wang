@@ -13,9 +13,9 @@ public class Check {
 		}
 		return false;
 	}
-	//验证公司名称是中文开头职能包括中文英文和数字的
+	//验证公司名称是中文开头只能包括中文英文和数字的
 	public	boolean checkc_name(String c_name){
-		String Messagename="^[\u4E00-\u9FA5A-Za-z0-9]+$";
+		String Messagename="^[\u0391-\uFFE5]+$";
 		if(c_name.matches(Messagename)){
 			return true;
 		}

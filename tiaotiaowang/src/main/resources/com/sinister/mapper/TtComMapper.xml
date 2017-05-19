@@ -8,7 +8,7 @@
 	<resultMap type="com.sinister.entity.TtCom" id="TtComResult">
 		<!-- 映射字段 数据库—实体类 -->
 		<!-- column数据表字段 ，property 实体类的属性 -->
-		<id column="c_id" jdbcType="INTEGER" property="c_id" />
+		<id column="c_cid" jdbcType="INTEGER" property="c_cid" />
 		<result column="c_comName" jdbcType="VARCHAR" property="c_comName" />
 		<result column="c_password" jdbcType="VARCHAR" property="c_password" />
 	</resultMap>
@@ -21,6 +21,11 @@
 	<insert id="insertTtCom" parameterType="com.sinister.entity.TtCom">
 		insert into c_com(c_comName,c_password) values(#{c_comName},#{c_password})
 	</insert>
+	<select id="findComName" parameterType="com.sinister.entity.TtCom"
+		resultMap="TtComResult">
+		<!-- 在xml写sql时，一定要在mysql运行成功 -->
+		SELECT * FROM c_com where c_comName=#{c_comName}
+	</select>
 	<!-- <select id="findUserById" parameterType="com.lanou.entity.User"
 		resultMap="UserResult">
 		在xml写sql时，一定要在mysql运行成功

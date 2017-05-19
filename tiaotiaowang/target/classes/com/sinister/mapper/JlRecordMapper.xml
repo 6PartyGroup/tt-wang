@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -46,3 +47,51 @@ UPDATE record set r_status = 2
 
 
 </mapper>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 查找简历的Mapper -->
+<mapper namespace="com.sinister.dao.JlReciuitDao">
+
+	<resultMap type="com.sinister.entity.JlRecord" id="JlRecordResultMapper">
+		<id column="r_rid" jdbcType="INTEGER" property="r_rid" />
+		<result column="r_jobs" jdbcType="INTEGER" property="r_jobs" />
+		<result column="c_mid" jdbcType="INTEGER" property="c_mid" />
+		<result column="r_status" jdbcType="INTEGER" property="r_status" />
+		<result column="r_time" jdbcType="VARCHAR" property="r_time" />
+		<result column="u_mid" jdbcType="INTEGER" property="u_mid" />
+	</resultMap>
+
+
+	<select id="findComRecord" parameterType="int" resultMap="JlRecordResultMapper">
+		select
+		* from c_recruit
+		WHERE c_mid in(
+		select c_mid from c_message
+		where c_cid
+		= #{c_cid}
+		)
+	</select>
+
+
+	<update id="jlupdateStatusTo1" parameterType="int">
+		<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态） -->
+		UPDATE record set r_status = 1
+		WHERE r_rid = #{c_cid}
+		)
+	</update>
+
+	<update id="jlupdateStatusTo2" parameterType="int">
+		<!-- 根据公司的登陆session信息c_cid更改简历投递表中的r_status（简历状态） -->
+		UPDATE record set r_status = 2
+		WHERE r_rid = #{c_cid}
+		)
+	</update>
+
+
+
+
+</mapper>
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
