@@ -6,7 +6,6 @@
 	<resultMap type="com.sinister.entity.AllJobs" id="AllJobsResult">
 		<id column="a_id" jdbcType="INTEGER" property="aId" />
 		<result column="a_name" jdbcType="VARCHAR" property="aName" />
-		<collection property="allJobs" resultMap="com.sinister.dao.AllJobsDao.AllJobsResult"></collection>
 	</resultMap>
 	<select id="selectAllJobs" resultMap="AllJobsResult">
 		select * from alljobs

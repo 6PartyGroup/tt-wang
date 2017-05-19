@@ -10,34 +10,44 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sinister.dao.AkJobsDao;
 import com.sinister.entity.AkModel;
+import com.sinister.entity.AllJobs;
 import com.sinister.entity.Crecruit;
 import com.sinister.service.AkJobsService;
 import com.sinister.service.AllJobsService;
 import com.sinister.service.GZUserService;
-
+/**
+ * 主页的controller层
+ * 
+ * @author ankun
+ *
+ */
 @Controller
 public class AllJobsController {
 	
-	//ankun 
+	//封装的service类
 	@Autowired
 	private AkJobsService akJobsService;
+	/**
+	 * 按时间查询最新的三条简历
+	 * 
+	 * @return List<AkModel> 包括公司信息、招聘职位和对应工作种类的模型
+	 */
 	@RequestMapping("akfind.do")
 	@ResponseBody
 	public List<AkModel> find(){
 		List<AkModel> akModels = akJobsService.selectAkJobs();
-		System.out.println("51131365");
 		return akModels;
 	}
+	/**
+	 * 根据职位查招聘信息
+	 * 
+	 * @param allJobs 要查询的职位
+	 * @return List<AkModel> 包括公司信息、招聘职位和对应工作种类的模型
+	 */
 	@RequestMapping("akfindc.do")
 	@ResponseBody
-	public List<AkModel> findc(@RequestBody String name){
-		List<AkModel> akModels = akJobsService.selectAkJobsFromName(name);
-		System.out.println("1234");
+	public List<AkModel> findc(@RequestBody AllJobs allJobs){
+		List<AkModel> akModels = akJobsService.selectAkJobsFromName(allJobs.getaName());
 		return akModels;
-	}
-	@RequestMapping("a.do")
-	public String a(){
-		System.out.println("821");
-		return "aa";
 	}
 }
