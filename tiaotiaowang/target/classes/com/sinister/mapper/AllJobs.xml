@@ -11,6 +11,8 @@
 		select * from alljobs
 	</select>
 
+<<<<<<< HEAD
+=======
 	<!-- 90 add sql -->
 	<!-- 查询所有大分类 -->
 	<select id="JlFindJobs" resultMap="AllJobsResult">
@@ -23,4 +25,5 @@
 	</select>
 
 
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 </mapper>

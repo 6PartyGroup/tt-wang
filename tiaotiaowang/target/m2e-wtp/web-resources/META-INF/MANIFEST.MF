@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+Manifest-Version: 1.0
+Built-By: ￥ﾭﾙ￩ﾛﾷ
+Build-Jdk: 1.8.0_121
+Created-By: Maven Integration for Eclipse
+
+=======
 Manifest-Version: 1.0
 Built-By: lanou1
 Build-Jdk: 1.8.0_111
 Created-By: Maven Integration for Eclipse
 
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git

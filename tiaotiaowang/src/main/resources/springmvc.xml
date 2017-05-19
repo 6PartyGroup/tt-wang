@@ -31,7 +31,7 @@
 	<!-- 这个类用于Spring MVC视图解析 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/" /><!-- 视图的路径 -->
+		<property name="prefix" value="/" /><!-- 视图的路径 -->
 		<property name="suffix" value=".html" /><!-- 视图的格式 -->
 	</bean>
 	<!-- 文件上传配置 5*1024*1024=1M -->
@@ -40,6 +40,9 @@
 		<property name="maxUploadSize" value="5242000"></property>
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
+<<<<<<< HEAD
+	
+=======
 
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="urlMap">
@@ -90,6 +93,7 @@
          </list>  
      </property>  
      </bean> -->
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 	<!-- ================================拦截器====================================== -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
