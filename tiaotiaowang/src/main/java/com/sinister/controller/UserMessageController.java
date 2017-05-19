@@ -13,14 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sinister.entity.ModelUserMessage;
@@ -40,69 +38,53 @@ public class UserMessageController {
 	public String saveUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-
-		// morentouxiang
+			
+		//Ĭ��ͷ���ַ
 		userMessage.setLogo("dddd/");
-
-		// shijian
+		
+		// �����޸�ʱ��
 		Date date = new Date(System.currentTimeMillis());
 		userMessage.setTime(date);
 
-		// zhuangtai
+		// ����״̬ 0Ϊ�ܱ��鵽 1Ϊ���ܱ��鵽
 		userMessage.setStatus(0);
 
-		// user waijian
+		// user���
 		Integer uid = (Integer) session.getAttribute("uid");
 		User user = new User();
 		user.setUid(uid);
 		userMessage.setUser(user);
 		userMessageService.saveUserMessage(userMessage);
 
-		return "success";
+		return null;
 	}
 
-	@RequestMapping(value = "updatetopfile.do", method = RequestMethod.POST)
+	@RequestMapping("updateUserMessageTopFile.do")
 	public String updateUserMessageTopFile(@RequestParam("file") MultipartFile file, HttpServletRequest request)
 			throws IOException {
 		if (!file.isEmpty()) {
 			FileUtils.copyInputStreamToFile(file.getInputStream(),
-					new File("C:\\Users\\Shinelon\\Desktop\\topfile", file.getOriginalFilename()));
+					new File("C:\\Users\\sunlei\\Desktop\\topfile\\", file.getOriginalFilename()));
 		}
 		String filename = file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Integer uid = (Integer) session.getAttribute("uid");
-		UserMessage userMessage = userMessageService.findMessageByUid(uid);
+		UserMessage userMessage = userMessageService.findUserMessageById(uid);
 		String fn = userMessage.getLogo();
 		if (filename == "") {
 			userMessage.setLogo(fn);
 		} else {
 			userMessage.setLogo("/dddd/" + filename);
 		}
-		Integer mid = (Integer) session.getAttribute("mid");
-		userMessage.setMid(mid);
 		userMessageService.updateUserMessage(userMessage);
-		return "login";
+		return "index";
 
-	}
-
-	@RequestMapping("findMessageByUid.do")
-	@ResponseBody
-	public UserMessage findMessageByUid(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Integer uid = (Integer) session.getAttribute("uid");
-		UserMessage userMessage = userMessageService.findMessageByUid(uid);
-		session.setAttribute("mid", userMessage.getMid());
-		return userMessage;
 	}
 
 	@RequestMapping("updateUserMessage.do")
-	@ResponseBody
-	public String updateUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Integer mid = (Integer) session.getAttribute("mid");
-		userMessage.setMid(mid);
+	public String updateUserMessage(@RequestBody UserMessage userMessage) {
 		userMessageService.updateUserMessage(userMessage);
-		return "success";
+		return null;
 	}
 
 	@RequestMapping(value = "findUserMessage.do", method = RequestMethod.POST)
@@ -115,14 +97,10 @@ public class UserMessageController {
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("page", page);
 		m.put("userMessage", usermessage);
+	
 		List<UserMessage> list = userMessageService.findUserMessage(m);
-		System.out.println(usermessage.getWorkyear());
-		System.out.println(usermessage.getMoney());
-		System.out.println(usermessage.getAge());
-		System.out.println(usermessage.getStatus());
-		System.out.println(usermessage.getSex());
-		System.out.println(list.size() == 0);
-		System.out.println(list);
+
+	
 
 		if (list.size() != 0) {
 			ModelUserMessage model = new ModelUserMessage();
