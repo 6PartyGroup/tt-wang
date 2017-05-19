@@ -53,8 +53,13 @@ public class UserMessageController {
 		User user = new User();
 		user.setUid(uid);
 		userMessage.setUser(user);
+		List<UserMessage> listuser=userMessageService.findAllUserMessage();
+		for (UserMessage um : listuser) {
+			if(uid==um.getUid()){
+				return "fail";
+			}
+		}
 		userMessageService.saveUserMessage(userMessage);
-
 		return "success";
 	}
 

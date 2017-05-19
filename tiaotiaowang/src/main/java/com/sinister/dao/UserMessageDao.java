@@ -22,4 +22,6 @@ public interface UserMessageDao {
 	UserMessage findUserMessageById(Integer uid);
 
 	UserMessage findUserMessageByUid(Integer uid);
+
+	List<UserMessage> findAllUserMessage();
 }
