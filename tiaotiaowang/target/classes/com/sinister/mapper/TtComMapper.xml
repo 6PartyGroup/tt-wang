@@ -1,47 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
-<mapper namespace="com.sinister.dao.TtComDao">
-	<!-- type属性-实体类 -->
-	<resultMap type="com.sinister.entity.TtCom" id="TtComResult">
-		<!-- 映射字段 数据库—实体类 -->
-		<!-- column数据表字段 ，property 实体类的属性 -->
-		<id column="c_id" jdbcType="INTEGER" property="c_id" />
-		<result column="c_comName" jdbcType="VARCHAR" property="c_comName" />
-		<result column="c_password" jdbcType="VARCHAR" property="c_password" />
-	</resultMap>
-	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
-	<select id="findTtCom" parameterType="com.sinister.entity.TtCom"
-		resultMap="TtComResult">
-		<!-- 在xml写sql时，一定要在mysql运行成功 -->
-		SELECT * FROM c_com
-	</select>
-	<insert id="insertTtCom" parameterType="com.sinister.entity.TtCom">
-		insert into c_com(c_comName,c_password) values(#{c_comName},#{c_password})
-	</insert>
-	<!-- <select id="findUserById" parameterType="com.lanou.entity.User"
-		resultMap="UserResult">
-		在xml写sql时，一定要在mysql运行成功
-		SELECT * FROM user where uid=#{uid}
-	</select>
-
-	<insert id="save" parameterType="com.lanou.entity.User"
-		useGeneratedKeys="true">
-		insert into user
-		(username,password,name,age,filename)
-		values
-		(#{username},#{password},#{name},#{age},#{filename})
-	</insert>
-	
-	<update id="updateFileName" parameterType="com.lanou.entity.User">
-	update user set filename=#{filename};
-	
-	</update> -->
-</mapper>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -89,4 +45,3 @@
 	
 	</update> -->
 </mapper>
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git

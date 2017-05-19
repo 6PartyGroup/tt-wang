@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sinister.entity.AllJobs;
+import com.sinister.entity.JlIntModel;
 import com.sinister.entity.JlReciuit;
 import com.sinister.entity.JlRecord;
 import com.sinister.entity.TtCom;
@@ -23,61 +24,61 @@ public class JlReciuitController {
 	@Autowired
 	private JlReciuitService jlReciuitService;
 
-	// ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½
+	// ²éÕÒ¹¤×÷µÄ´ó·ÖÀà
 	@RequestMapping("/JlfindJobs.do")
 	@ResponseBody
 	public List<AllJobs> JlfindJobs() {
 		return jlReciuitService.JlFindJobs();
 	}
 
-	// ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¾ï¿½ï¿½ï¿½Ö°Î»
+	// ²éÕÒ¹¤×÷µÄ´ó·ÖÀàÏÂµÄ¾ßÌåÖ°Î»
 	@RequestMapping("/JlfindSmallJobs.do")
 	@ResponseBody
 	public List<AllJobs> JlfindSmallJobs(int a_id) {
 		return jlReciuitService.JlfindSmallJob(a_id);
 	}
 
-	// JL Controllerï¿½ã±£ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½Ï¢
+	// JL Controller²ã±£´æÕÐÆ¸ÐÅÏ¢
 	@RequestMapping("JlSaveReciuit.do")
 	@ResponseBody
 	public String JlSaveReciuit(@RequestBody JlReciuit jlReciuit, HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
 		TtCom ttCom = (TtCom) session.getAttribute("Com");
-		// Ê¹ï¿½Ã¹ï¿½Ë¾ï¿½ï¿½Â½Ê±ï¿½ï¿½ï¿½Ëºï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½Ë¾ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½idÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jlReciuit.setC_mid
+		// Ê¹ÓÃ¹«Ë¾µÇÂ½Ê±µÄÕËºÅid²éÑ¯¹«Ë¾µÄ¾ßÌåÐÅÏ¢µÄidÖµ£¬²¢½«²éÑ¯½á¹û´«ÈëjlReciuit.setC_mid
 		int i = jlReciuitService.jlFindComId(ttCom.getC_cid());
-		// ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¾ï¿½Ä¹ï¿½Ë¾ï¿½ï¿½Ï¢idÖµ
+		// ÊéÐ´·¢²¼¼òÀú¹«Ë¾µÄ¹«Ë¾ÐÅÏ¢idÖµ
 		jlReciuit.setC_mid(i);
 		jlReciuitService.JlSaveReciuit(jlReciuit);
 		return "saveSuccess";
 	}
 
-	// ï¿½ï¿½Òµï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½
-	// ï¿½Ú¼ï¿½ï¿½ï¿½Í¶ï¿½Ý¼ï¿½Â¼ï¿½Ð²ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ë¾ï¿½Ä¼ï¿½ï¿½ï¿½
+	// ÆóÒµ²éÑ¯¼òÀúÍ¶µÝÇé¿ö
+	// ÔÚ¼òÀúÍ¶µÝ¼ÇÂ¼ÖÐ²éÕÒ£¬²¢ÇÒÊä³öµ±Ç°¹«Ë¾µÄ¼òÀú
 	@RequestMapping("/jlfindRecord.do")
 	@ResponseBody
 	public List<JlRecord> findComRecord(HttpServletRequest rreq) {
 		HttpSession session = rreq.getSession();
 		TtCom ttCom = (TtCom) session.getAttribute("Com");
-		List<JlRecord> list = jlReciuitService.findComRecord(1);
+		List<JlRecord> list = jlReciuitService.findComRecord(94);
 		return list;
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä³ï¿½1ï¿½ï¿½ï¿½Ñ²é¿´ï¿½ï¿½
+	// ½«¼òÀú×´Ì¬¸Ä³É1£¨ÒÑ²é¿´£©
 	@RequestMapping("jlupdateStatusTo1.do")
 	@ResponseBody
-	public String jlupdateStatusTo1(int r_rid) {
+	public String jlupdateStatusTo1(@RequestBody JlIntModel jlIntModel) {
 	
-		jlReciuitService.jlupdateStatusTo1(r_rid);
-		return "jlUpdateSuccess";
+		jlReciuitService.jlupdateStatusTo1((jlIntModel).getC_cid());
+		return "okk";
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä³ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½
+	// ½«¼òÀú×´Ì¬¸Ä³É2£¨ÃæÊÔÑûÔ¼£©
 	@RequestMapping("jlupdateStatusTo2.do")
 	@ResponseBody
-	public String jlupdateStatusTo2(int r_rid) {
+	public String jlupdateStatusTo2(@RequestBody JlIntModel jlIntModel) {
 		
-		jlReciuitService.jlupdateStatusTo1(r_rid);
+		jlReciuitService.jlupdateStatusTo2(jlIntModel.getC_cid());
 		return "jlUpdateSuccess";
 	}
 
