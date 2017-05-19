@@ -22,7 +22,7 @@
 	<!-- 这个类用于Spring MVC视图解析 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/" /><!-- 视图的路径 -->
+		<property name="prefix" value="/" /><!-- 视图的路径 -->
 		<property name="suffix" value=".html" /><!-- 视图的格式 -->
 	</bean>
 	<!-- 激活注解 -->
@@ -39,26 +39,6 @@
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 	
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">  
-     <property name="urlMap">  
-         <map>  
-              <entry key="/**" value="myResourceHandler" />  
-         </map>  
-     </property>  
-     <property name="order" value="100000" />         
-</bean>  
-  
-  
-<bean id="myResourceHandler" name="myResourceHandler"  
-      class="org.springframework.web.servlet.resource.ResourceHttpRequestHandler">  
-      <property name="locations" value="/" />  
-      <property name="supportedMethods">  
-         <list>  
-            <value>GET</value>  
-            <value>HEAD</value>  
-            <value>POST</value>  
-         </list>  
-     </property>  
 	<!-- ================================拦截器====================================== -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>

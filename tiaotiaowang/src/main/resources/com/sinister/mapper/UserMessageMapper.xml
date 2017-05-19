@@ -36,39 +36,45 @@
 		<if test="1==1">
 			and u_status=0
 		</if>
+		
 		<if test="userMessage.sex!='' and userMessage.sex!=null">
 			and u_sex =#{userMessage.sex}
 		</if>
-<<<<<<< HEAD
+
 		<if test="userMessage.age!=0">
 			and u_age BETWEEN #{userMessage.age} and
 			#{userMessage.status}
-=======
-		<if test="userMessage.age!=null">
-			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		</if>
+		
+		<if test="userMessage.age!=null">
+			and u_age BETWEEN #{userMessage.age} and
+			#{userMessage.status}
+
+		</if>
+		
 		<if test="userMessage.edu!='' and userMessage.edu!=null">
 			and u_edu = #{userMessage.edu}
 		</if>
-<<<<<<< HEAD
+
 		<if test="userMessage.workyear!=0">
 			and u_workyear BETWEEN #{userMessage.workyear} and
 			#{userMessage.money}
-=======
-		<if test="userMessage.workyear!=null">
-			and u_workyear BETWEEN #{userMessage.workyear} and #{userMessage.money}
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		</if>
-	<!-- 	<if test="userMessage.major!='' and userMessage.major!=null">
-			and u_major = #{userMessage.major}
-		</if> -->
+		<if test="userMessage.workyear!=null">
+			and u_workyear BETWEEN #{userMessage.workyear} and
+			#{userMessage.money}
+
+		</if>
+		<!-- <if test="userMessage.major!='' and userMessage.major!=null"> and 
+			u_major = #{userMessage.major} </if> -->
 		<if test="userMessage.jobs!='' and userMessage.jobs!=null">
 			and u_jobs like "%"#{userMessage.jobs}"%"
 		</if>
 		ORDER BY u_time DESC
 		limit #{page.dbIndex},#{page.dbNumber}
 	</select>
+
+
 	<!-- zzz查询最新更新的5条简历 -->
 	<select id="findUserMessageTime" parameterType="com.sinister.entity.UserMessage"
 		resultMap="UserMessageResult">

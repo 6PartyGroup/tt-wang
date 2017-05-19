@@ -81,8 +81,7 @@ public class UserMessageController {
 		Integer mid = (Integer) session.getAttribute("mid");
 		userMessage.setMid(mid);
 		userMessageService.updateUserMessage(userMessage);
-		return "login";
-
+		return "updatemessage";
 	}
 
 	@RequestMapping("findMessageByUid.do")
