@@ -17,6 +17,15 @@
 
 	<select id="findComRecord" parameterType="int" resultMap="JlRecordResultMapper">
 		select
+<<<<<<< HEAD
+		* from c_recruit
+		WHERE c_mid in(
+		select c_mid from c_message
+		where c_cid
+		= #{c_cid}
+		)
+	</select>
+=======
 		* from record
 		WHERE c_mid in(
 		select c_mid from c_message
@@ -25,6 +34,7 @@
 		)
 	</select>
 
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 
 
 	<update id="jlupdateStatusTo1" parameterType="int">

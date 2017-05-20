@@ -192,6 +192,6 @@ public class TtComMessage {
 //		TtComMessageEntity te = ttComService.findcomMessage_name(comMessageEntity);
 //		//然后把单个公司信息里的主键id放入到session里
 //		session.setAttribute("ComMessageId", te.getC_cid());
-		return "ok";
+		return "redirect:http://localhost:8080/showComMessage.html";
 	}
 }
