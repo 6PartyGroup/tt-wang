@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
-=======
 import com.sinister.dao.GZUserDao;
 import com.sinister.entity.Cmessage;
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 import com.sinister.entity.Crecruit;
 import com.sinister.entity.GZUserEntity;
 import com.sinister.entity.GZmondel;
