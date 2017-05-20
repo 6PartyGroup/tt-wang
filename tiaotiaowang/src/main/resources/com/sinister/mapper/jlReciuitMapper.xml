@@ -29,8 +29,7 @@
 		#{c_address},#{c_mid})
 	</insert>
 
-	<select id="jlFindComId" parameterType="int" resultType="int">
-	
+	<select id="jlFindComId" parameterType="int" resultType="int">	
 		select c_mid from c_message where c_cid = #{c_id}
 	</select>
 

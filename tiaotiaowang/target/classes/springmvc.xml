@@ -38,10 +38,18 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="5242000"></property>
+<<<<<<< HEAD
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 
 	
+=======
+		<property name="defaultEncoding" value="UTF-8"></property>
+<<<<<<< HEAD
+	</bean>
+=======
+	</bean>
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="urlMap">
@@ -63,7 +71,12 @@
 				<value>POST</value>
 			</list>
 		</property>
+<<<<<<< HEAD
 		</bean>
+=======
+		</bean>
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		<!-- ================================拦截器====================================== -->
 		<!-- <mvc:interceptors> <mvc:interceptor> 默认拦截的连接 <mvc:mapping path="/cheakUserName" 
 			/> -->
