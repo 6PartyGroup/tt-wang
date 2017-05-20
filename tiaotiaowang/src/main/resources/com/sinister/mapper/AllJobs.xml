@@ -14,7 +14,8 @@
 	<!-- 90 add sql -->
 	<!-- 查询所有大分类 -->
 	<select id="JlFindJobs" resultMap="AllJobsResult">
-		select * from alljobs where j_id = 0
+		select * from alljobs where
+		j_id = 0
 	</select>
 
 	<!-- 根据大分类查询小分类 -->

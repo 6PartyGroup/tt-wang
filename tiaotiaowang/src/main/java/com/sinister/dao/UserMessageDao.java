@@ -22,17 +22,14 @@ public interface UserMessageDao {
 	UserMessage findUserMessageById(Integer uid);
 
 	UserMessage findUserMessageByUid(Integer uid);
-<<<<<<< HEAD
+
 	//90 add mthod to find people message
 	public List<UserMessage> jlSeePeople(int u_mid);//UserMessageDao
 	
+	public List<UserMessage> findAllUserMessage();
 	
 	
 	
 	
-	
-=======
 
-	List<UserMessage> findAllUserMessage();
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 }
