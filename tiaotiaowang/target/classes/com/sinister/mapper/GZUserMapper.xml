@@ -23,12 +23,8 @@
 	  select * from c_message where c_mid=#{mid} 
 	</select>
 	
-<<<<<<< HEAD
-
-=======
 	<!-- 通过公司名查找公司信息  -->
   	<select id="findcomss" parameterType="com.sinister.entity.GZUserEntity" resultMap="GZUserResult">
 	  select * from c_message where c_name=#{name} 
 	</select>
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 </mapper>

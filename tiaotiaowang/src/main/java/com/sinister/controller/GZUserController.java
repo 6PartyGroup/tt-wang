@@ -100,15 +100,15 @@ public class GZUserController {
 	@RequestMapping(value="gzsaveuser.do",method=RequestMethod.POST)
 	@ResponseBody
 	public String saveuser(HttpServletRequest request){
-		HttpSession session1 = request.getSession();
-		User user = (User) session1.getAttribute("uid");
-		GZUserEntity com = (GZUserEntity) session1.getAttribute("c_mid");
+//		HttpSession session1 = request.getSession();
+//		User user = (User) session1.getAttribute("uid");
+//		GZUserEntity com = (GZUserEntity) session1.getAttribute("c_mid");
 		
 		JlRecord jlrecord = new JlRecord();
-		jlrecord.setU_mid(user.getUid());
-		jlrecord.setC_mid(com.getMid());
-//		jlrecord.setU_mid(2);
-//		jlrecord.setC_mid(2);
+//		jlrecord.setU_mid(user.getUid());
+//		jlrecord.setC_mid(com.getMid());
+		jlrecord.setU_mid(2);
+		jlrecord.setC_mid(2);
 		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String hehe = dateFormat.format( now ); 
