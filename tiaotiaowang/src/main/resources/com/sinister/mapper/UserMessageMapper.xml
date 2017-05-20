@@ -44,7 +44,9 @@
 		<if test="userMessage.age!=0">
 			and u_age BETWEEN #{userMessage.age} and
 			#{userMessage.status}
-		</if>
+
+			</if>
+
 		<if test="userMessage.age!=null">
 			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
 		</if>
@@ -56,13 +58,15 @@
 		<if test="userMessage.edu!='' and userMessage.edu!=null">
 			and u_edu = #{userMessage.edu}
 		</if>
+
 		<if test="userMessage.edu=='1'.toString() ">
 			and (u_edu = "大专"or u_edu ="本科"or u_edu ="硕士"or u_edu ="博士")
 		</if>
+
 		<if test="userMessage.workyear!=0">
 			and u_workyear BETWEEN #{userMessage.workyear} and
 			#{userMessage.money}
-		</if>
+			</if>
 		<if test="userMessage.edu=='2'.toString()">
 			and (u_edu ='本科'or u_edu ='硕士'or u_edu ='博士')
 		</if>
@@ -75,13 +79,12 @@
 		<if test="userMessage.workyear!=null and userMessage.money !=null">
 			and u_workyear BETWEEN #{userMessage.workyear} and #{userMessage.money}
 		</if>
+
 		<if test="userMessage.workyear!=null">
 			and u_workyear BETWEEN #{userMessage.workyear} and
 			#{userMessage.money}
 
 		</if>
-		<!-- <if test="userMessage.major!='' and userMessage.major!=null"> and 
-			u_major = #{userMessage.major} </if> -->
 		<if test="userMessage.jobs!='' and userMessage.jobs!=null">
 			and u_jobs like CONCAT("%",#{userMessage.jobs},"%")
 		</if>
@@ -163,5 +166,12 @@
 		WHERE
 		u_mid = #{mid}
 	</update>
-
+	<select id="findUserMessageByUid" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		select * from u_message where u_uid=#{uid}
+	</select>
+	<select id="findAllUserMessage" parameterType="com.sinister.entity.UserMessage"
+		resultMap="UserMessageResult">
+		select * from u_message
+	</select>
 </mapper>
