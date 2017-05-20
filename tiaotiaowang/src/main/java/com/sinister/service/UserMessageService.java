@@ -20,4 +20,6 @@ public interface UserMessageService {
 
 	UserMessage findMessageByUid(Integer uid);
 
+	List<UserMessage> findAllUserMessage();
+
 }

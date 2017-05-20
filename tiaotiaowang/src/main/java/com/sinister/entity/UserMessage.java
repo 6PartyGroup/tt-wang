@@ -2,10 +2,6 @@ package com.sinister.entity;
 
 import java.sql.Date;
 
-//sl
-//zhu
-
-
 public class UserMessage {
 
 	private int mid;
@@ -22,10 +18,19 @@ public class UserMessage {
 	private String work;// 工作经历
 	private String jobs;// 求职岗位
 	private String myself;// 自我评价
-	private int money;// 期望薪资
+	private String money;// 期望薪资
 	private String skill ;// 专业技能
+	private int uid;
 	
 	
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
 	private Date time;// 简历生成时间
 	private int status;// 状态
 
@@ -45,6 +50,14 @@ public class UserMessage {
 
 	public void setMid(int mid) {
 		this.mid = mid;
+	}
+
+	public String getMoney() {
+		return money;
+	}
+
+	public void setMoney(String money) {
+		this.money = money;
 	}
 
 	public String getLogo() {
@@ -153,13 +166,7 @@ public class UserMessage {
 		this.myself = myself;
 	}
 
-	public int getMoney() {
-		return money;
-	}
 
-	public void setMoney(int money) {
-		this.money = money;
-	}
 
 	public String getSkill() {
 		return skill;
