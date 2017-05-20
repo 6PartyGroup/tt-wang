@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/sinister/controller/AllJobsController.java=UTF-8
 encoding//src/main/java/com/sinister/controller/UserMessageController.java=UTF-8
+encoding//src/main/java/com/sinister/dao/UserMessageDao.java=UTF-8
 encoding//src/main/java/com/sinister/entity/UserMessage.java=UTF-8

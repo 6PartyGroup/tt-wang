@@ -49,4 +49,8 @@ public class UserMessageServiceImpl implements UserMessageService {
 		return userMessageDao.findUserMessageByUid(uid);
 	}
 
+	public List<UserMessage> findAllUserMessage() {
+		return userMessageDao.findAllUserMessage();
+	}
+
 }

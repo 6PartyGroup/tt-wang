@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.sinister.dao.GZUserDao;
 import com.sinister.entity.Crecruit;
 import com.sinister.entity.GZUserEntity;
+import com.sinister.entity.JlRecord;
 import com.sinister.service.GZUserService;
 
 @Service
@@ -15,7 +16,11 @@ public class GZUserServiceImpl implements GZUserService{
 	@Resource
 	private GZUserDao gzuserdao;
 	
-	
+	//根据公司名字查找公司信息
+	public GZUserEntity findcomss(String string) {
+		GZUserEntity gzuserentity = gzuserdao.findcomss(string);
+		return gzuserentity;
+	}
 	//查找公司信息
 	public GZUserEntity findGZUser(int id) {
 		GZUserEntity entity=gzuserdao.findGZUser(id);
@@ -37,11 +42,14 @@ public class GZUserServiceImpl implements GZUserService{
 			Crecruit crecruit = gzuserdao.findcrecruit(id);
 			return crecruit;
 	}
+	//保存投递简历信息
+	public void gasaveuser(JlRecord jlrecord) {
+		gzuserdao.gasaveuser(jlrecord);
+	}
+	
 
 
-	
-	
-	
+
 	
 	
 }

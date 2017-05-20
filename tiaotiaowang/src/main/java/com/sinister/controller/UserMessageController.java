@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
@@ -26,65 +25,91 @@ import com.sinister.entity.Page;
 import com.sinister.entity.User;
 import com.sinister.entity.UserMessage;
 import com.sinister.service.UserMessageService;
+import com.sinister.util.Check;
 
 @Controller
 public class UserMessageController {
 
 	@Autowired
 	private UserMessageService userMessageService;
-
+	@Autowired
+	private Check check;
 	@RequestMapping("saveUserMessage.do")
 	@ResponseBody
 	public String saveUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-			
-		//Ĭ��ͷ���ַ
+		if (userMessage.getName() ==  "") {
+			return "c_nameWorng";
+		} else if (check.checkc_telon(userMessage.getTelon()) == false || userMessage.getTelon() == "") {
+			return "c_telonWorng";
+		} 
+		// morentouxiang
 		userMessage.setLogo("dddd/");
-		
-		// �����޸�ʱ��
+
+		// shijian
 		Date date = new Date(System.currentTimeMillis());
 		userMessage.setTime(date);
 
-		// ����״̬ 0Ϊ�ܱ��鵽 1Ϊ���ܱ��鵽
+		// zhuangtai
 		userMessage.setStatus(0);
 
-		// user���
+		// user waijian
 		Integer uid = (Integer) session.getAttribute("uid");
 		User user = new User();
 		user.setUid(uid);
 		userMessage.setUser(user);
+		List<UserMessage> listuser=userMessageService.findAllUserMessage();
+		for (UserMessage um : listuser) {
+			if(uid==um.getUid()){
+				return "fail";
+			}
+		}
 		userMessageService.saveUserMessage(userMessage);
-
-		return null;
+		return "success";
 	}
 
-	@RequestMapping("updateUserMessageTopFile.do")
+	@RequestMapping(value = "updatetopfile.do", method = RequestMethod.POST)
 	public String updateUserMessageTopFile(@RequestParam("file") MultipartFile file, HttpServletRequest request)
 			throws IOException {
 		if (!file.isEmpty()) {
 			FileUtils.copyInputStreamToFile(file.getInputStream(),
-					new File("C:\\Users\\sunlei\\Desktop\\topfile\\", file.getOriginalFilename()));
+					new File("C:\\Users\\Shinelon\\Desktop\\topfile", file.getOriginalFilename()));
 		}
 		String filename = file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Integer uid = (Integer) session.getAttribute("uid");
-		UserMessage userMessage = userMessageService.findUserMessageById(uid);
+		UserMessage userMessage = userMessageService.findMessageByUid(uid);
 		String fn = userMessage.getLogo();
 		if (filename == "") {
 			userMessage.setLogo(fn);
 		} else {
 			userMessage.setLogo("/dddd/" + filename);
 		}
+		Integer mid = (Integer) session.getAttribute("mid");
+		userMessage.setMid(mid);
 		userMessageService.updateUserMessage(userMessage);
-		return "index";
+		return "updatemessage";
+	}
 
+	@RequestMapping("findMessageByUid.do")
+	@ResponseBody
+	public UserMessage findMessageByUid(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Integer uid = (Integer) session.getAttribute("uid");
+		UserMessage userMessage = userMessageService.findMessageByUid(uid);
+		session.setAttribute("mid", userMessage.getMid());
+		return userMessage;
 	}
 
 	@RequestMapping("updateUserMessage.do")
-	public String updateUserMessage(@RequestBody UserMessage userMessage) {
+	@ResponseBody
+	public String updateUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Integer mid = (Integer) session.getAttribute("mid");
+		userMessage.setMid(mid);
 		userMessageService.updateUserMessage(userMessage);
-		return null;
+		return "success";
 	}
 
 	@RequestMapping(value = "findUserMessage.do", method = RequestMethod.POST)
@@ -97,10 +122,7 @@ public class UserMessageController {
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("page", page);
 		m.put("userMessage", usermessage);
-	
 		List<UserMessage> list = userMessageService.findUserMessage(m);
-
-	
 
 		if (list.size() != 0) {
 			ModelUserMessage model = new ModelUserMessage();

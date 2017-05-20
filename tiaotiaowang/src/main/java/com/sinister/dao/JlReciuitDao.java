@@ -26,7 +26,8 @@ public interface JlReciuitDao {
 	
 	//根据公司session中id更改监理记录中的状态码 ===> 2 邀约面试
 	public void jlupdateStatusTo2(int c_cid);
-	
+	//查询个人简历
+	public List<JlRecord> jlSeePeople(int u_mid);
 	
 	
 	

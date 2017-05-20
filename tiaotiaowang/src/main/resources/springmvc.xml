@@ -31,7 +31,7 @@
 	<!-- 这个类用于Spring MVC视图解析 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/" /><!-- 视图的路径 -->
+		<property name="prefix" value="/" /><!-- 视图的路径 -->
 		<property name="suffix" value=".html" /><!-- 视图的格式 -->
 	</bean>
 	<!-- 文件上传配置 5*1024*1024=1M -->
@@ -39,7 +39,33 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="5242000"></property>
 		<property name="defaultEncoding" value="UTF-8"></property>
+<<<<<<< HEAD
 	</bean>
+=======
+	</bean>
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="urlMap">
+			<map>
+				<entry key="/**" value="myResourceHandler" />
+			</map>
+		</property>
+		<property name="order" value="100000" />
+	</bean>
+
+
+	<bean id="myResourceHandler" name="myResourceHandler"
+		class="org.springframework.web.servlet.resource.ResourceHttpRequestHandler">
+		<property name="locations" value="/" />
+		<property name="supportedMethods">
+			<list>
+				<value>GET</value>
+				<value>HEAD</value>
+				<value>POST</value>
+			</list>
+		</property>
+		</bean>
+>>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 		<!-- ================================拦截器====================================== -->
 		<!-- <mvc:interceptors> <mvc:interceptor> 默认拦截的连接 <mvc:mapping path="/cheakUserName" 
 			/> -->
@@ -56,8 +82,7 @@
      <property name="order" value="100000" />         
 </bean>  
   
-  
-<bean id="myResourceHandler" name="myResourceHandler"  
+<!-- <bean id="myResourceHandler" name="myResourceHandler"  
       class="org.springframework.web.servlet.resource.ResourceHttpRequestHandler">  
       <property name="locations" value="/" />  
       <property name="supportedMethods">  
@@ -67,7 +92,7 @@
             <value>POST</value>  
          </list>  
      </property>  
-     </bean>
+     </bean> -->
 	<!-- ================================拦截器====================================== -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
