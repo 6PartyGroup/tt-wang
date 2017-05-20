@@ -25,19 +25,25 @@ import com.sinister.entity.Page;
 import com.sinister.entity.User;
 import com.sinister.entity.UserMessage;
 import com.sinister.service.UserMessageService;
+import com.sinister.util.Check;
 
 @Controller
 public class UserMessageController {
 
 	@Autowired
 	private UserMessageService userMessageService;
-
+	@Autowired
+	private Check check;
 	@RequestMapping("saveUserMessage.do")
 	@ResponseBody
 	public String saveUserMessage(@RequestBody UserMessage userMessage, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-
+		if (userMessage.getName() ==  "") {
+			return "c_nameWorng";
+		} else if (check.checkc_telon(userMessage.getTelon()) == false || userMessage.getTelon() == "") {
+			return "c_telonWorng";
+		} 
 		// morentouxiang
 		userMessage.setLogo("dddd/");
 

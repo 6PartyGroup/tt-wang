@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sinister.dao.GZUserDao;
 import com.sinister.entity.Crecruit;
 import com.sinister.entity.GZUserEntity;
 import com.sinister.service.GZUserService;
