@@ -29,6 +29,14 @@
 		<association property="user"
 			resultMap="com.sinister.dao.UserDao.UserResult"></association>
 	</resultMap>
+	
+	<!-- 90 add find people message -->
+	<select id="jlSeePeople" parameterType="int" resultMap="UserMessageResult">
+	select * from u_message where u_mid = #{u_mid}
+</select>
+	
+	
+	
 	<!-- zzz 分页查询 -->
 	<select id="findUserMessage" parameterType="java.util.Map"
 		resultMap="UserMessageResult">

@@ -22,4 +22,12 @@ public interface UserMessageDao {
 	UserMessage findUserMessageById(Integer uid);
 
 	UserMessage findUserMessageByUid(Integer uid);
+	//90 add mthod to find people message
+	public List<UserMessage> jlSeePeople(int u_mid);//UserMessageDao
+	
+	
+	
+	
+	
+	
 }

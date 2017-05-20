@@ -16,6 +16,7 @@ import com.sinister.entity.JlIntModel;
 import com.sinister.entity.JlReciuit;
 import com.sinister.entity.JlRecord;
 import com.sinister.entity.TtCom;
+import com.sinister.entity.UserMessage;
 import com.sinister.service.JlReciuitService;
 
 @Controller
@@ -64,11 +65,21 @@ public class JlReciuitController {
 		return list;
 	}
 
+	// 企业查询简历投递情况
+	// 在简历投递记录中查找，并且输出当前公司的简历
+	@RequestMapping("/jlSeePeople.do")
+	@ResponseBody
+	public List<UserMessage> jlSeePeople(@RequestBody JlIntModel jlIntModel) {
+		int u_mid = jlIntModel.getU_mid();
+		List<UserMessage> list = jlReciuitService.jlSeePeople(u_mid);
+		return list;
+	}
+
 	// 将简历状态改成1（已查看）
 	@RequestMapping("jlupdateStatusTo1.do")
 	@ResponseBody
 	public String jlupdateStatusTo1(@RequestBody JlIntModel jlIntModel) {
-	
+
 		jlReciuitService.jlupdateStatusTo1((jlIntModel).getC_cid());
 		return "okk";
 	}
@@ -77,7 +88,7 @@ public class JlReciuitController {
 	@RequestMapping("jlupdateStatusTo2.do")
 	@ResponseBody
 	public String jlupdateStatusTo2(@RequestBody JlIntModel jlIntModel) {
-		
+
 		jlReciuitService.jlupdateStatusTo2(jlIntModel.getC_cid());
 		return "jlUpdateSuccess";
 	}

@@ -17,13 +17,14 @@
 
 	<select id="findComRecord" parameterType="int" resultMap="JlRecordResultMapper">
 		select
-		* from c_recruit
+		* from record
 		WHERE c_mid in(
 		select c_mid from c_message
 		where c_cid
 		= #{c_cid}
 		)
 	</select>
+
 
 
 	<update id="jlupdateStatusTo1" parameterType="int">

@@ -5,6 +5,7 @@ import java.util.List;
 import com.sinister.entity.AllJobs;
 import com.sinister.entity.JlReciuit;
 import com.sinister.entity.JlRecord;
+import com.sinister.entity.UserMessage;
 
 public interface JlReciuitService {
 
@@ -26,5 +27,10 @@ public interface JlReciuitService {
 	public List<AllJobs> JlFindJobs();
 
 	public List<AllJobs> JlfindSmallJob(int a_id);
+	
+	//查询个人简历
+
+		
+		public List<UserMessage> jlSeePeople(int u_mid);//UserMessageDao
 
 }
