@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
+<mapper namespace="com.sinister.dao.TtComDao">
+	<!-- type属性-实体类 -->
+	<resultMap type="com.sinister.entity.TtComMessageEntity" id="TtMessageResult">
+		<!-- 映射字段 数据库—实体类 -->
+		<!-- column数据表字段 ，property 实体类的属性 -->
+		<id column="c_mid" jdbcType="INTEGER" property="c_mid" />
+		<result column="c_name" jdbcType="VARCHAR" property="c_name" />
+		<result column="c_telon" jdbcType="VARCHAR" property="c_telon" />
+		<result column="c_address" jdbcType="VARCHAR" property="c_address" />
+		<result column="c_scale" jdbcType="INTEGER" property="c_scale" />
+		<result column="c_nature" jdbcType="VARCHAR" property="c_nature" />
+		<result column="c_logo" jdbcType="VARCHAR" property="c_logo" />
+		<result column="c_show" jdbcType="VARCHAR" property="c_show" />
+		<result column="c_cid" jdbcType="INTEGER" property="c_cid" />
+		<result column="c_email" jdbcType="VARCHAR" property="c_email" />
+	</resultMap>
+	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
+	<select id="findcomMessage" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
+		select c_show from c_message where c_name=#{c_name}
+	</select>
+	<select id="findcomMessage_name" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
+		select * from c_message where c_mid=#{c_mid}
+	</select>
+	<select id="findcomMessage_logo" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
+		select * from c_message where c_cid=#{c_cid}
+	</select>
+	<select id="showComMessage" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
+		select * from c_message where c_cid=#{c_cid}
+	</select>
+	<select id="shoComTou" parameterType="com.sinister.entity.TtCom" resultMap="TtMessageResult">
+		select * from c_message where c_cid=#{c_cid}
+	</select>
+	<select id="findcomImg" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
+		select * from c_message 
+	</select>
+	<update id="saveComMessage" parameterType="com.sinister.entity.TtComMessageEntity">
+		<!-- 在xml写sql时，一定要在mysql运行成功 -->
+		<!-- insert into c_message (c_name,c_telon,c_address,c_scale,c_nature,c_show,c_cid)
+		values(#{c_name},#{c_telon},#{c_address},#{c_scale},#{c_nature},#{c_show},#{c_cid})
+		where 1=1  -->
+		update c_message set c_name=#{c_name},c_telon=#{c_telon},c_address=#{c_address},c_scale=#{c_scale},
+		c_email=#{c_email},c_nature=#{c_nature},c_show=#{c_show} where 1=1 
+		<if test="c_mid != '' "> 
+		and c_mid = #{c_mid}
+		</if>
+	</update>
+	<insert id="saveComMessagefile" parameterType="com.sinister.entity.TtComMessageEntity">
+		insert into  c_message  (c_logo,c_cid) values(#{c_logo},#{c_cid})
+	</insert>
+	<update id="updateComMessagefile" parameterType="com.sinister.entity.TtComMessageEntity">
+		update c_message set c_logo=#{c_logo} where c_cid=#{c_cid}
+	</update>
+	<update id="updateNewMessage" parameterType="com.sinister.entity.TtComMessageEntity">
+		update c_message set c_name=#{c_name},c_telon=#{c_telon},c_address=#{c_address},c_scale=#{c_scale},
+		c_email=#{c_email},c_nature=#{c_nature},c_show=#{c_show} where c_cid = #{c_cid}
+	</update>
+	</mapper>

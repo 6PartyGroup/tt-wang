@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinister.dao.AllJobsDao">
+	<resultMap type="com.sinister.entity.AllJobs" id="AllJobsResult">
+		<id column="a_id" jdbcType="INTEGER" property="aId" />
+		<result column="a_name" jdbcType="VARCHAR" property="aName" />
+	</resultMap>
+	<select id="selectAllJobs" resultMap="AllJobsResult">
+		select * from alljobs
+	</select>
+
+	<!-- 90 add sql -->
+	<!-- 查询所有大分类 -->
+	<select id="JlFindJobs" resultMap="AllJobsResult">
+		select * from alljobs where j_id = 0
+	</select>
+
+	<!-- 根据大分类查询小分类 -->
+	<select id="JlfindSmallJob" parameterType="Integer" resultMap="AllJobsResult">
+		select * from alljobs where j_id = #{a_id}
+	</select>
+
+
+</mapper>
