@@ -17,10 +17,10 @@ public interface JlReciuitService {
 	public List<JlRecord> findComRecord(int c_cid);
 
 	// 根据公司session中id更改监理记录中的状态码 ===> 1 已查看
-	public void jlupdateStatusTo1(int c_cid);
+	public void jlupdateStatusTo1(int r_rid);
 
 	// 根据公司session中id更改监理记录中的状态码 ===> 2 邀约面试
-	public void jlupdateStatusTo2(int c_cid);
+	public void jlupdateStatusTo2(int r_rid);
 
 	// 查找工作中的大分类
 	public List<AllJobs> JlFindJobs();

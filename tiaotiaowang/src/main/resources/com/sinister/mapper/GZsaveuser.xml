@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 命名空间 可以自定义 但是不能与其他的namespace重复 -->
+<mapper namespace="com.sinister.dao.GZUserDao">
+	<!-- type属性-实体类 -->
+	<resultMap type="com.sinister.entity.JlRecord" id="JlRecordResult">
+		<!-- 映射字段 数据库—实体类 -->
+		<!-- column数据表字段 ，property 实体类的属性 -->
+		<id column="r_rid" jdbcType="INTEGER" property="r_rid" />
+		<result column="r_jobs" jdbcType="INTEGER" property="r_jobs" />
+		<result column="c_mid" jdbcType="INTEGER" property="c_mid" />
+		<result column="r_status" jdbcType="INTEGER" property="r_status" />
+		<result column="r_time" jdbcType="VARCHAR" property="r_time" />
+		<result column="u_mid" jdbcType="INTEGER" property="u_mid" />
+	</resultMap>
+	
+	<insert id="gasaveuser" parameterType="com.sinister.entity.JlRecord" useGeneratedKeys="true">
+	  insert into record (r_jobs,c_mid,r_status,r_time,u_mid) values (#{r_jobs},#{c_mid},#{r_status},#{r_time},#{u_mid})
+	</insert>
+	
+	
+	
+   
+</mapper>

@@ -40,9 +40,6 @@
 		<property name="maxUploadSize" value="5242000"></property>
 		<property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
-<<<<<<< HEAD
-	
-=======
 
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="urlMap">
@@ -81,7 +78,6 @@
      <property name="order" value="100000" />         
 </bean>  
   
-  
 <!-- <bean id="myResourceHandler" name="myResourceHandler"  
       class="org.springframework.web.servlet.resource.ResourceHttpRequestHandler">  
       <property name="locations" value="/" />  
@@ -93,7 +89,6 @@
          </list>  
      </property>  
      </bean> -->
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 	<!-- ================================拦截器====================================== -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>

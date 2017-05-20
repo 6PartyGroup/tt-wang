@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sinister.dao.AkJobsDao;
 import com.sinister.entity.AkModel;
 import com.sinister.entity.AllJobs;
-import com.sinister.entity.Crecruit;
 import com.sinister.service.AkJobsService;
-import com.sinister.service.AllJobsService;
-import com.sinister.service.GZUserService;
 /**
  * 主页的controller层
  * 

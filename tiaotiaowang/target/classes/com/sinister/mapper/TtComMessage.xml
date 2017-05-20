@@ -12,21 +12,6 @@
 		<result column="c_name" jdbcType="VARCHAR" property="c_name" />
 		<result column="c_telon" jdbcType="VARCHAR" property="c_telon" />
 		<result column="c_address" jdbcType="VARCHAR" property="c_address" />
-<<<<<<< HEAD
-		<result column="c_scale" jdbcType="VARCHAR" property="c_scale" />
-		<result column="c_nature" jdbcType="VARCHAR" property="c_nature" /><result column="c_name" jdbcType="VARCHAR" property="c_name" />
-		<result column="logo" jdbcType="VARCHAR" property="logo" />
-		<result column="c_show" jdbcType="VARCHAR" property="c_show" />
-	</resultMap>
-	<!-- parameterType 接收传过来的类型传递过来的类型 (Object) -->
-	<select id="findcomMessage" parameterType="com.sinister.entity.TtComMessageEntity" resultMap="TtMessageResult">
-		select c_show from c_message where c_name=#{c_name}
-	</select>
-	<insert id="saveComMessage" parameterType="com.sinister.entity.TtComMessageEntity">
-		<!-- 在xml写sql时，一定要在mysql运行成功 -->
-		insert into c_message (c_name,c_telon,c_address,c_scale,c_nature,c_show,logo)values(#{c_name},#{c_telon},#{c_address},#{c_scale},#{c_nature},#{logo},#{c_show})
-	</insert>
-=======
 		<result column="c_scale" jdbcType="INTEGER" property="c_scale" />
 		<result column="c_nature" jdbcType="VARCHAR" property="c_nature" />
 		<result column="c_logo" jdbcType="VARCHAR" property="c_logo" />
@@ -74,5 +59,4 @@
 		update c_message set c_name=#{c_name},c_telon=#{c_telon},c_address=#{c_address},c_scale=#{c_scale},
 		c_email=#{c_email},c_nature=#{c_nature},c_show=#{c_show} where c_cid = #{c_cid}
 	</update>
->>>>>>> branch 'dev' of git@github.com:6PartyGroup/tt-wang.git
 	</mapper>

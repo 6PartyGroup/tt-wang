@@ -44,7 +44,9 @@
 		<if test="userMessage.age!=0">
 			and u_age BETWEEN #{userMessage.age} and
 			#{userMessage.status}
+
 			</if>
+
 		<if test="userMessage.age!=null">
 			and u_age BETWEEN #{userMessage.age} and #{userMessage.status}
 		</if>
@@ -52,12 +54,11 @@
 		<if test="userMessage.age!=null">
 			and u_age BETWEEN #{userMessage.age} and
 			#{userMessage.status}
-
 		</if>
-		
 		<if test="userMessage.edu!='' and userMessage.edu!=null">
 			and u_edu = #{userMessage.edu}
-			</if>
+		</if>
+
 		<if test="userMessage.edu=='1'.toString() ">
 			and (u_edu = "大专"or u_edu ="本科"or u_edu ="硕士"or u_edu ="博士")
 		</if>
@@ -84,7 +85,6 @@
 			#{userMessage.money}
 
 		</if>
-
 		<if test="userMessage.jobs!='' and userMessage.jobs!=null">
 			and u_jobs like CONCAT("%",#{userMessage.jobs},"%")
 		</if>
